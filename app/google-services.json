@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1053261563403",
+    "firebase_url": "https://applojatour.firebaseio.com",
+    "project_id": "applojatour",
+    "storage_bucket": "applojatour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053261563403:android:6b93c86c8532752d",
+        "android_client_info": {
+          "package_name": "com.lojatour.applojatour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053261563403-mqrnk63nckoboi824hpspf03rf83tb5t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lojatour.applojatour",
+            "certificate_hash": "448dab03ab8113797fbeba1ddec106fa8e4496d5"
+          }
+        },
+        {
+          "client_id": "1053261563403-484af3hil8lukc7fgt02vqlqm47c6atv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwQeZ_VHA8otfbwyZaYIuU_79UE3Zj2wI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053261563403-484af3hil8lukc7fgt02vqlqm47c6atv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

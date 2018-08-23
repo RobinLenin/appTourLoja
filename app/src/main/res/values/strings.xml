@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">appLojaTour</string>
+
+    //Crea cadenas para el identificador de tu aplicación de Facebook
+    <string name="facebook_app_id">249394119238617</string>
+    <string name="fb_login_protocol_scheme">fb249394119238617</string>
+
+    //Mensajes Facebook
+    <string name="cancel_login">Se cancelo la operación</string>
+    <string name="error_login">Se produjo un error al iniciar con Facebook</string>
+    <string name="logout">Cerrar sesión</string>
+
+
+    //Mensajes de Firebase
+    <string name="firebase_error_login">No se ha podido autentificar con Firebase</string>
+
+
+</resources>
