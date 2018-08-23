@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:minWidth="300dp"
+        android:minHeight="400dp"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/CustomFontStyleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:text="@string/usuario"
+            />
+
+        <EditText
+            android:id="@+id/txtUsuarioR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/CustomFontStyleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:text="@string/usuario"
+            />
+
+        <EditText
+            android:id="@+id/txtclaveR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+
+
+        <LinearLayout
+            android:id="@+id/botonera"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="0">
+
+            <Button
+                android:id="@+id/dialogButtonGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_guardar"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+
+                />
+
+            <Button
+                android:id="@+id/dialogButtonCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_cancelar"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

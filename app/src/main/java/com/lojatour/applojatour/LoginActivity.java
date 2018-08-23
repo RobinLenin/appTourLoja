@@ -1,13 +1,20 @@
 package com.lojatour.applojatour;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -22,6 +29,13 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FirebaseUser;
+import com.lojatour.applojatour.controlador.ws.Conexion;
+import com.lojatour.applojatour.controlador.ws.Modelos.UsuarioLoginJson;
+import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
+import com.lojatour.applojatour.controlador.ws.VolleyProcesadorResultado;
+import com.lojatour.applojatour.controlador.ws.VolleyTiposError;
+
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,6 +47,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
+    //
+    private EditText usuario;
+    private EditText clave;
+    private Button btn_login;
+    private RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +62,12 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         loginButtonFacebook = (LoginButton) findViewById(R.id.login_buttonFacebook);
         loginButtonFacebook.setReadPermissions("email");
+
+        //
+        usuario = (EditText) findViewById(R.id.txtUsuario);
+        clave = (EditText) findViewById(R.id.txtClave);
+        btn_login = (Button) findViewById(R.id.btnLogin);
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Callback registration
         loginButtonFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -70,6 +96,61 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+        oyentes();
+
+    }
+
+    private void oyentes(){
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = usuario.getText().toString();
+                String password = clave.getText().toString();
+                if(user.trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), R.string.usuarioVacio,
+                            Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+                if(password.trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), R.string.claveVacio,
+                            Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+                progressBar.setVisibility(View.VISIBLE);
+                HashMap<String, String> mapa = new HashMap<>();
+                mapa.put("usuario", user);
+                mapa.put("clave", password);
+                VolleyPeticion<UsuarioLoginJson> inicio = Conexion.iniciarSesion(
+                        getApplicationContext(),
+                        mapa,
+                        new Response.Listener<UsuarioLoginJson>() {
+                            @Override
+                            public void onResponse(UsuarioLoginJson response) {
+                                MainActivity.TOKEN = response.token;
+                                MainActivity.ID_EXTERNAL = response.id;
+                                Toast.makeText(getApplicationContext(), "Bienvenido" + response.nombre,
+                                        Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                irPantallaPrincipal();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                progressBar.setVisibility(View.GONE);
+                                VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
+                                Toast.makeText(getApplicationContext(), errores.errorMessage,
+                                        Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+                );
+                requestQueue.add(inicio);
+            }
+        });
+    }
+
+    public void abrirdialogoRegistrar(View view){
 
     }
 

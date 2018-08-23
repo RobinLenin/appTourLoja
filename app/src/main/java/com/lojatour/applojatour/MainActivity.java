@@ -13,12 +13,16 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.lojatour.applojatour.controlador.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView uidTextView;
+
+    public static String TOKEN = "";
+    public static String ID_EXTERNAL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +45,18 @@ public class MainActivity extends AppCompatActivity {
             emailTextView.setText(email);
             uidTextView.setText(uid);
         } else {
-            irLogin();
+            verInicioSesion();
         }
+
 
         //if (AccessToken.getCurrentAccessToken() == null) {
         //    irLogin();
         //}
+    }
+    private void verInicioSesion(){
+        if(Utilidades.isEmpty(MainActivity.TOKEN)){
+            irLogin();
+        }
     }
 
     private void irLogin() {

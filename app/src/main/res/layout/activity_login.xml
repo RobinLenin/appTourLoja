@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dip"
+    android:background="#2E9AFE"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/txt_msgsesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/nombre_app"
+        android:textColor="@color/com_facebook_blue"
+        android:textSize="40sp"
+        android:paddingBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/usuario"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txtClave"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="@string/clave"
+        android:inputType="textPassword"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="30dip" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/btn_login"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip" />
+
+    <TextView
+        android:id="@+id/txt_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_gravity="center_horizontal"
+        android:text="ó"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:paddingBottom="20dp"></TextView>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_buttonFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
         android:paddingBottom="10dp"
         android:paddingTop="10dp" />
 
@@ -20,8 +71,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:indeterminate="true"
         android:visibility="gone" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/txt_registrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/txt_registrar"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:paddingTop="30dp"
+        android:onClick="abrirdialogoRegistrar"></TextView>
+
+</LinearLayout>

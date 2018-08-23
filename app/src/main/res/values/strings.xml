@@ -15,4 +15,20 @@
     <string name="firebase_error_login">No se ha podido autentificar con Firebase</string>
 
 
+    //Login
+    <string name="inicio_sesion">Inicio de Sesión</string>
+    <string name="nombre_app">Loja Tour</string>
+    <string name="btn_login">Iniciar</string>
+    <string name="usuario">Usuario</string>
+    <string name="clave">Contraseña</string>
+    <string name="email">Email</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_cancelar">Cancelar</string>
+
+
+    <string name="usuarioVacio">Fantan datos en usuario</string>
+    <string name="claveVacio">Faltan datos en contraseña</string>
+
+    //txt
+    <string name="txt_registrar">Registrarse</string>
 </resources>
