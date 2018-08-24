@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     private void verInicioSesion(){
         if(Utilidades.isEmpty(MainActivity.TOKEN)){
             irLogin();
+        }else {
+            nameTextView.setText(TOKEN);
         }
     }
 

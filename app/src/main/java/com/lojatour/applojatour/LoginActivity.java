@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     //
-    private EditText usuario;
+    private EditText correo;
     private EditText clave;
     private Button btn_login;
     private RequestQueue requestQueue;
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButtonFacebook.setReadPermissions("email");
 
         //
-        usuario = (EditText) findViewById(R.id.txtUsuario);
+        correo = (EditText) findViewById(R.id.txtUsuario);
         clave = (EditText) findViewById(R.id.txtClave);
         btn_login = (Button) findViewById(R.id.btnLogin);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = usuario.getText().toString();
+                String user = correo.getText().toString();
                 String password = clave.getText().toString();
                 if(user.trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), R.string.usuarioVacio,
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.VISIBLE);
                 HashMap<String, String> mapa = new HashMap<>();
-                mapa.put("usuario", user);
+                mapa.put("correo", user);
                 mapa.put("clave", password);
                 VolleyPeticion<UsuarioLoginJson> inicio = Conexion.iniciarSesion(
                         getApplicationContext(),

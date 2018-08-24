@@ -10,14 +10,14 @@ import com.lojatour.applojatour.controlador.ws.Modelos.UsuarioLoginJson;
 import java.util.HashMap;
 
 public class Conexion {
-    private final static String API_URL = "http://seguimientomedico.com/noticiasws/public/index.php/";
+    private final static String API_URL = "http://tuor.000webhostapp.com/tour/public/index.php/";
     public static VolleyPeticion<UsuarioLoginJson> iniciarSesion(
             @NonNull final Context context,
             @NonNull final HashMap mapa,
             @NonNull Response.Listener<UsuarioLoginJson> responseListener,
             @NonNull Response.ErrorListener errorListener
             ){
-        final String url = API_URL + "noticias/login";
+        final String url = API_URL + "usuario/login";
         VolleyPeticion request = new VolleyPeticion(
                 context,
                 Request.Method.POST,

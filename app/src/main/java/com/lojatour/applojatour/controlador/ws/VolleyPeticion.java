@@ -23,7 +23,7 @@ import java.util.Map;
 public class VolleyPeticion<T> extends Request<T> {
 
     private static final String PROTOCOL_CHARSET = "utf-8";
-    private static final String CONTENT_TYPE = "application/vnd.api-v1+json";
+    private static final String CONTENT_TYPE = "application/json";
     private static final String CONTENT_TYPE_JSON = "application/json";
     private String postData = null;
     private Listener<T> listener;
