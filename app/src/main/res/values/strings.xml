@@ -31,4 +31,9 @@
 
     //txt
     <string name="txt_registrar">Registrarse</string>
+
+    <string name="inicio">inicio</string>
+    <string name="buscar">buscar</string>
+    <string name="camara">camara</string>
+    <string name="favorito">favorito</string>
 </resources>
