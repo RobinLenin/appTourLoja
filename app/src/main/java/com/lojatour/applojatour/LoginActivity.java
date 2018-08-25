@@ -2,12 +2,14 @@ package com.lojatour.applojatour;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -49,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText correo;
     private EditText clave;
     private Button btn_login;
+    private TextView txt_registrar;
+
     private RequestQueue requestQueue;
 
     @Override
@@ -65,7 +69,15 @@ public class LoginActivity extends AppCompatActivity {
         correo = (EditText) findViewById(R.id.txtUsuario);
         clave = (EditText) findViewById(R.id.txtClave);
         btn_login = (Button) findViewById(R.id.btnLogin);
+        txt_registrar = (TextView) findViewById(R.id.txt_registrar);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        txt_registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                muestraDialogo();
+            }
+        });
 
         // Callback registration
         loginButtonFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -148,8 +160,26 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void abrirdialogoRegistrar(View view){
+    private void muestraDialogo() {
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //
+        View mView = getLayoutInflater().inflate(R.layout.dialog_registrar, null);
+
+        TextView titulo = (TextView) mView.findViewById(R.id.txtTituloDlg);
+        //titulo.setText(usuario.nombre);
+
+        TextView anio = (TextView) mView.findViewById(R.id.txtYearDlg);
+        //anio.setText(usuario.id);
+
+        TextView tipo = (TextView) mView.findViewById(R.id.txt4Dlg);
+        //tipo.setText(usuario.correo);
+
+
+        builder.setView(mView);
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void handleFacebookAccessToken(AccessToken accessToken) {

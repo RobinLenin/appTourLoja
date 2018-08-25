@@ -1,76 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:minWidth="300dp"
-        android:minHeight="400dp"
-        android:padding="16dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="6dp">
 
-        <TextView
-            style="@style/CustomFontStyleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="fill"
-            android:text="@string/usuario"
-            />
+    <!--dd
+    <ImageView
+        android:id="@+id/imgFilmDlg"
+        android:layout_width="260dip"
+        android:layout_height="290dip"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"/>
+-->
 
-        <EditText
-            android:id="@+id/txtUsuarioR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-
-        <TextView
-            style="@style/CustomFontStyleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="fill"
-            android:text="@string/usuario"
-            />
-
-        <EditText
-            android:id="@+id/txtclaveR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
+    <TextView
+        android:id="@+id/txtTituloDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:text="Usuario"
+        android:textSize="18sp" />
 
 
+    <TextView
+        android:id="@+id/txt3Dlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clave"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/botonera"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="0">
-
-            <Button
-                android:id="@+id/dialogButtonGuardar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_guardar"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-
-                />
-
-            <Button
-                android:id="@+id/dialogButtonCancelar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_cancelar"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-
-                />
+    <TextView
+        android:id="@+id/txtYearDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dip"
+        android:paddingLeft="60dp"
+        android:text="Va el anio"
+        android:textColor="#343434"
+        android:textSize="18sp" />
 
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/txt4Dlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
-    </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

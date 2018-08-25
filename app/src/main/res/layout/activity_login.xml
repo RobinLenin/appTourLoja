@@ -83,7 +83,6 @@
         android:text="@string/txt_registrar"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        android:paddingTop="30dp"
-        android:onClick="abrirdialogoRegistrar"></TextView>
+        android:paddingTop="30dp"></TextView>
 
 </LinearLayout>

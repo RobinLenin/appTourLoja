@@ -1,6 +1,7 @@
 package com.lojatour.applojatour;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.lojatour.applojatour.controlador.fragmento.SearchFragment;
 import com.lojatour.applojatour.controlador.fragmento.HomeFragment;
 import com.lojatour.applojatour.controlador.fragmento.MapaFragment;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView uidTextView;
-    private BottomNavigationView bottomNavigationView;
+    //private BottomNavigationView bottomNavigationView;
 
 
     public static String TOKEN = "";
@@ -32,21 +34,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_principal);
 
-       /* nameTextView = (TextView) findViewById(R.id.nameTextView);
+       nameTextView = (TextView) findViewById(R.id.nameTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
-        uidTextView = (TextView) findViewById(R.id.uidTextView);*/
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        uidTextView = (TextView) findViewById(R.id.uidTextView);
+        //bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         //cargamos el fragmento predeterminado al comenzar.
-        loadFragment(new HomeFragment());
+        //loadFragment(new HomeFragment());
         //getting bottom navigation view and attaching the listener
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        //bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        //bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
             String name = user.getDisplayName();
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             uidTextView.setText(uid);
         } else {
             verInicioSesion();
-        }*/
+        }
 
 
         //if (AccessToken.getCurrentAccessToken() == null) {
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (Utilidades.isEmpty(MainActivity.TOKEN)) {
             irLogin();
         } else {
-            //nameTextView.setText(TOKEN);
+            nameTextView.setText(TOKEN);
         }
     }
 
