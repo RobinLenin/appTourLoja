@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import com.lojatour.applojatour.R;
 
-/**
- * Created by Belal on 1/23/2018.
- */
 
 public class ProfileFragment extends Fragment {
     @Nullable

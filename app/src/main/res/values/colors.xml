@@ -17,4 +17,8 @@
 
     <color name="colorNavIcon">#dae9f6</color>
     <color name="colorNavText">#01294b</color>
+
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="graylight">#fafafa</color>
 </resources>

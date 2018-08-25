@@ -19,9 +19,6 @@ import com.lojatour.applojatour.MainActivity;
 import com.lojatour.applojatour.R;
 import com.lojatour.applojatour.SitiosMasVisitados;
 
-/**
- * Created by Belal on 1/23/2018.
- */
 
 public class HomeFragment extends Fragment {
 
@@ -33,12 +30,13 @@ public class HomeFragment extends Fragment {
     private LinearLayout layout002;//aqui estan los 4 cardViews
     private Intent intent;
 
-
+/*
+ Como tenemos 4 vistas diferentes para cambiar con el botonNavigationView,
+ necesitamos crear 4 layouts y 4 clases de fragmento de Java.*/
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-       videoView.start();
     }
 
     @Nullable
@@ -47,7 +45,7 @@ public class HomeFragment extends Fragment {
        /*
 simplemente cambie el fragmento_pashboard con el fragmento que desea inflar
 como si la clase es HomeFragment debería tener R.layout.home_fragment
-si es DashboardFragment debería tener R.layout.fragment_dashboard*/
+si es SearchFragment debería tener R.layout.fragment_search*/
         View rootView=inflater.inflate(R.layout.fragment_home,container,false);//fragmento_home
 
         //cuando se usa framgents los findViewByid van con rootView
@@ -59,6 +57,7 @@ si es DashboardFragment debería tener R.layout.fragment_dashboard*/
         videoView = (VideoView) rootView.findViewById(R.id.video);
 
         intent = new Intent(getActivity(),SitiosMasVisitados.class);
+
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,8 +87,6 @@ si es DashboardFragment debería tener R.layout.fragment_dashboard*/
             }
         });
 
-        //Context pathVideo:: android.resource://com.lojatour.applojatour/2131558400
-        //Activity pathVideo:: android.resource://com.lojatour.applojatour/2131558400
         String path = "android.resource://" + getActivity().getPackageName()
                 + "/" + R.raw.lojavideo;
         Log.i("pathVideo: ",path);
@@ -103,12 +100,15 @@ si es DashboardFragment debería tener R.layout.fragment_dashboard*/
         });
         videoView.start();
 
-
         return rootView;
         //return inflater.inflate(R.layout.fragment_home, null);
 
     }
 
+    /**
+     * Metodo que ayuda a reinicar el video cuando se cambia de actividad y luego se regresa
+     * a la misma actividad
+     */
     @Override
     public void onResume() {
         super.onResume();
