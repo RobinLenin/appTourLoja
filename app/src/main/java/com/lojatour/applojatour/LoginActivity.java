@@ -1,6 +1,5 @@
 package com.lojatour.applojatour;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +26,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FirebaseUser;
 import com.lojatour.applojatour.controlador.ws.Conexion;
-import com.lojatour.applojatour.controlador.ws.Modelos.UsuarioLoginJson;
+import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.VolleyProcesadorResultado;
 import com.lojatour.applojatour.controlador.ws.VolleyTiposError;

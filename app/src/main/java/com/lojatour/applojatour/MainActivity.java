@@ -3,10 +3,14 @@ package com.lojatour.applojatour;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,22 +19,20 @@ import android.widget.VideoView;
 
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.lojatour.applojatour.controlador.fragmento.DashboardFragment;
+import com.lojatour.applojatour.controlador.fragmento.HomeFragment;
+import com.lojatour.applojatour.controlador.fragmento.NotificationsFragment;
+import com.lojatour.applojatour.controlador.fragmento.ProfileFragment;
 import com.lojatour.applojatour.controlador.utilidades.Utilidades;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView uidTextView;
     private BottomNavigationView bottomNavigationView;
     private TextView infoTextView;
-    private VideoView videoView;
-    private CardView cardView1;
-    private CardView cardView2;
-    private CardView cardView3;
-    private CardView cardView4;
-    private LinearLayout layout002;//aqui estan los 4 cardViews
-    private Intent intent;
+
 
     public static String TOKEN = "";
     public static String ID_EXTERNAL = "";
@@ -45,58 +47,16 @@ public class MainActivity extends AppCompatActivity {
         emailTextView = (TextView) findViewById(R.id.emailTextView);
         uidTextView = (TextView) findViewById(R.id.uidTextView);*/
 
-        layout002 = (LinearLayout) findViewById(R.id.layout002);
-        cardView1 = (CardView) findViewById(R.id.card1);
-        cardView2 = (CardView) findViewById(R.id.card2);
-        cardView3 = (CardView) findViewById(R.id.card3);
-        cardView4 = (CardView) findViewById(R.id.card4);
 
-        intent = new Intent(this,SitiosMasVisitados.class);
-
-
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "has dado click card", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "has dado click card", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "has dado click card", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-        cardView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "has dado click card", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        videoView = (VideoView) findViewById(R.id.video);
 
-        String path = "android.resource://" + getPackageName()
-                + "/" + R.raw.lojavideo;
-        videoView.setVideoURI(Uri.parse(path));
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setVolume(0f, 0f);
-                mp.setLooping(true);
-            }
-        });
-        videoView.start();
+
+        loadFragment(new HomeFragment());
+        //getting bottom navigation view and attaching the listener
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
 
 
         /* bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -162,10 +122,47 @@ public class MainActivity extends AppCompatActivity {
         irLogin();
     }
 
-
+/*
     @Override
     protected void onRestart() {
         super.onRestart();
         videoView.start();
+    }*/
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+
+        switch (item.getItemId()) {
+            case R.id.homeItem:
+                fragment = new HomeFragment();
+                break;
+
+            case R.id.searchItem:
+                fragment = new DashboardFragment();
+                break;
+
+            case R.id.cameraItem:
+                fragment = new NotificationsFragment();
+                break;
+
+            case R.id.favoriteItem:
+                fragment = new ProfileFragment();
+                break;
+        }
+
+        return loadFragment(fragment);
     }
 }
