@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-       nameTextView = (TextView) findViewById(R.id.nameTextView);
-        emailTextView = (TextView) findViewById(R.id.emailTextView);
-        uidTextView = (TextView) findViewById(R.id.uidTextView);
+       
         //bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         //cargamos el fragmento predeterminado al comenzar.
