@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-       
+
         //bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         //cargamos el fragmento predeterminado al comenzar.
@@ -124,11 +124,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new SearchFragment();
                 break;
 
-            case R.id.cameraItem:
+            case R.id.mapaItem:
                 fragment = new MapaFragment();
                 break;
 
-            case R.id.favoriteItem:
+            case R.id.profileItem:
                 fragment = new ProfileFragment();
                 break;
         }

@@ -61,28 +61,28 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "has dado click card1", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "has dado click card2", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "has dado click card3", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "has dado click card4", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });

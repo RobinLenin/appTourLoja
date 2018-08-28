@@ -13,14 +13,14 @@
         />
 
     <item
-        android:id="@+id/cameraItem"
-        android:title="@string/camara"
+        android:id="@+id/mapaItem"
+        android:title="@string/mapa"
         android:icon="@mipmap/ic_camera_alt"
         />
 
     <item
-        android:id="@+id/favoriteItem"
-        android:title="@string/favorito"
+        android:id="@+id/profileItem"
+        android:title="@string/perfil"
         android:icon="@mipmap/ic_favorite"
         />
 </menu>
