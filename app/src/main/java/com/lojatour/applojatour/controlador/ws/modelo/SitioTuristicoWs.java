@@ -10,6 +10,13 @@ public class SitioTuristicoWs {
     private String direccion;
     private String horarios;
     private String altura;
+    private String sitioWeb;
+    private String latitud;
+    private String longuitud;
+    private String external_id;
+
+
+
 
     public String getStitioTuristico_id() {
         return stitioTuristico_id;
@@ -107,9 +114,6 @@ public class SitioTuristicoWs {
         this.external_id = external_id;
     }
 
-    private String sitioWeb;
-    private String latitud;
-    private String longuitud;
-    private String external_id;
+
 
 }

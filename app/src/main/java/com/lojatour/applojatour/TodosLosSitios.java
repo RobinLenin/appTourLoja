@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,7 +25,9 @@ import com.lojatour.applojatour.controlador.ws.Conexion;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TodosLosSitios extends AppCompatActivity {
 
@@ -108,6 +111,8 @@ public class TodosLosSitios extends AppCompatActivity {
                                 Toast.LENGTH_SHORT);
                         toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
                         toast1.show();
+
+                        Log.i("msgResponse","ERROR");
 
                     }
                 }

@@ -25,19 +25,20 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
     Context mContext;
     Activity activity;
 
-
     public ListaAdaptadorSitiosWs(List<SitioTuristicoWs>data,Context context) {
-        super(context, R.layout.item_lista);//item_lista.xnl
+        super(context, R.layout.item_lista, data);//no funcionaba porque faltaba el parametro data el el super
         this.dataset=data;
         this.mContext=context;
-        Log.i("msg","entro al constructor1 ListaAdaptador");
+        Log.i("msg","entro al constructorBBBBB ListaAdaptador");
     }
     public ListaAdaptadorSitiosWs(Context context) {
-        super(context,R.layout.lista_vacia, new ArrayList<SitioTuristicoWs>());
-        this.dataset = new ArrayList<SitioTuristicoWs>();
-        this.mContext = context;
+        super(context, R.layout.lista_vacia,new ArrayList<SitioTuristicoWs>());//
+        this.dataset=new ArrayList<SitioTuristicoWs>();
+        this.mContext=context;
 
     }
+
+
     static class ViewHolder {
         protected TextView tvNombre;
 
@@ -46,19 +47,18 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Log.i("Entro al getView","Lista Adaptador");
         LayoutInflater  inflater = LayoutInflater.from(mContext);
 
         View item = null;
 
         if (dataset.isEmpty()){
             item = inflater.inflate(R.layout.lista_vacia, null);
-            Log.i("msg","entro al if de ListaAdaptador");
+            Log.i("msg","entro al if del getView en ListaAdaptador");
         }
         else
         {
             item = inflater.inflate(R.layout.item_lista, null);
-            Log.i("msg","entro al else de ListaAdaptador");
+            Log.i("msg","entro al else del getView en ListaAdaptador");
         }
 
         /*//En cada item del listView se mostraran la imagen...
@@ -73,13 +73,13 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
         TextView descrip = (TextView)item.findViewById(R.id.tvDescripcion);
         descrip.setText(dataset.get(position).getDescripcion());
         ///////////
-        final ViewHolder viewHolder = new ViewHolder();
+       /* final ViewHolder viewHolder = new ViewHolder();
 
         // *** instanciamos a los recursos
         viewHolder.tvNombre = (TextView)item.findViewById(R.id.tvNombre);
 
         // importante!!! establecemos el mensaje
-        viewHolder.tvNombre.setText(dataset.get(position).getNombre());
+        viewHolder.tvNombre.setText(dataset.get(position).getNombre());*/
 
         return  item;
 

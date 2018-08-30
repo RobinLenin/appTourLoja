@@ -89,7 +89,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card4", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "TODOS LOS SITIOS", Toast.LENGTH_SHORT).show();
                 startActivity(intent4);
             }
         });
