@@ -2,7 +2,8 @@ package com.lojatour.applojatour.controlador.ws.modelo;
 
 public class SitioTuristicoWs {
 
-    private String stitioTuristico_id;
+
+    private String sitioTuristico_id;
     private String nombre;
     private String descripcion;
     private String tipo;
@@ -14,17 +15,26 @@ public class SitioTuristicoWs {
     private String latitud;
     private String longuitud;
     private String external_id;
+    private String ruta;
 
-
-
-
-    public String getStitioTuristico_id() {
-        return stitioTuristico_id;
+    public String getRuta() {
+        return ruta;
     }
 
-    public void setStitioTuristico_id(String stitioTuristico_id) {
-        this.stitioTuristico_id = stitioTuristico_id;
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
+
+
+
+    public String getSitioTuristico_id() {
+        return sitioTuristico_id;
+    }
+
+    public void setSitioTuristico_id(String sitioTuristico_id) {
+        this.sitioTuristico_id = sitioTuristico_id;
+    }
+
 
     public String getNombre() {
         return nombre;

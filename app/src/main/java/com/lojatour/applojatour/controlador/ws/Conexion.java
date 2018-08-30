@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
 
@@ -88,5 +89,33 @@ public class Conexion {
         peticion.setResponseClass(SitioTuristicoWs[].class);
 
         return peticion;
+    }
+
+    /**
+     *
+     * @param sitio_id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
+    public static VolleyPeticion<ImagenWs> buscarImagenSitio(
+            @NonNull final Context context,
+            @NonNull String sitio_id,
+            @NonNull Response.Listener<ImagenWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "imagen/buscar/"+sitio_id;
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(ImagenWs.class);
+
+        return request;
+
     }
 }

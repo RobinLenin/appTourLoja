@@ -3,15 +3,10 @@ package com.lojatour.applojatour;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,15 +20,14 @@ import com.lojatour.applojatour.controlador.ws.Conexion;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TodosLosSitios extends AppCompatActivity {
 
     private ListaAdaptadorSitiosWs listaAdaptadorWS;
     private ListView listView;
     private RequestQueue requestQueue;//
+
 
 
     @Override
@@ -49,7 +43,9 @@ public class TodosLosSitios extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);//en el main hubiera ido con el this
 
-        consultarWS();
+        consultarSitiosWS();
+
+
 
         //este metodo se activa cuando se da click enu un item dela lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,7 +65,6 @@ public class TodosLosSitios extends AppCompatActivity {
         //
         View mView = getLayoutInflater().inflate(R.layout.dialog_pelicula, null);
 
-
        /* ImageView poster = (ImageView) mView.findViewById(R.id.imgFilmDlg);
         Picasso.with(getApplicationContext()).load(pelicula.getPoster()).error(R.mipmap.ic_home).fit().centerInside().into(poster);
 */
@@ -87,7 +82,7 @@ public class TodosLosSitios extends AppCompatActivity {
     }
 
 
-    private void consultarWS(){
+    private void consultarSitiosWS(){
         //aqui van todos los request
         VolleyPeticion<SitioTuristicoWs[]> films = Conexion.getListaSitios(
                 getApplicationContext(),
@@ -97,6 +92,8 @@ public class TodosLosSitios extends AppCompatActivity {
                         //cuando son de este tipo no va con el this va con el getApplicationContext
                         listaAdaptadorWS = new ListaAdaptadorSitiosWs(Arrays.asList(response),getApplicationContext());//en el main hubiera ido con getApplicationContext()
                         listView.setAdapter(listaAdaptadorWS);
+                        System.out.println("HolaaaXXXXXXXXX");
+                       // consultarImagenWS("5");
 
                 Log.i("msgResponse",response.length+"");
 
@@ -121,5 +118,8 @@ public class TodosLosSitios extends AppCompatActivity {
         requestQueue.add(films);
 
     }
+
+
+
 
 }

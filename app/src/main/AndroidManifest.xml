@@ -41,6 +41,7 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SitiosMasVisitados"></activity>
         <activity android:name=".TodosLosSitios"></activity>
+
     </application>
 
 </manifest>
