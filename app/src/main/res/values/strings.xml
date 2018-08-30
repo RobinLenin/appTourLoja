@@ -41,4 +41,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
+
+    <string name="msg_no_busqueda">No Busqueda</string>
+    <string name="nombre">Nombre: </string>
+    <string name="descripcion">Descripcion: </string>
 </resources>

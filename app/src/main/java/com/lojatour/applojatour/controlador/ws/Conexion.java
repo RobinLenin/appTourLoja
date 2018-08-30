@@ -69,4 +69,24 @@ public class Conexion {
 
         return request;
     }
+
+    public static VolleyPeticion<SitioTuristicoWs[]> getListaSitios(
+            @NonNull final Context context,
+            @NonNull Response.Listener<SitioTuristicoWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    )
+    {
+
+        final String url = API_URL + "sitio/listar";
+
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(SitioTuristicoWs[].class);
+
+        return peticion;
+    }
 }

@@ -18,6 +18,7 @@ import android.widget.VideoView;
 import com.lojatour.applojatour.MainActivity;
 import com.lojatour.applojatour.R;
 import com.lojatour.applojatour.SitiosMasVisitados;
+import com.lojatour.applojatour.TodosLosSitios;
 
 
 public class HomeFragment extends Fragment {
@@ -28,7 +29,10 @@ public class HomeFragment extends Fragment {
     private CardView cardView3;
     private CardView cardView4;
     private LinearLayout layout002;//aqui estan los 4 cardViews
-    private Intent intent;
+    private Intent intent1;
+    private Intent intent2;
+    private Intent intent3;
+    private Intent intent4;
 
 /*
  Como tenemos 4 vistas diferentes para cambiar con el botonNavigationView,
@@ -56,34 +60,37 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         cardView4 = (CardView) rootView.findViewById(R.id.card4);
         videoView = (VideoView) rootView.findViewById(R.id.video);
 
-        intent = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent1 = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent2 = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent3 = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent4 = new Intent(getActivity(),TodosLosSitios.class);
 
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "has dado click card1", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                startActivity(intent1);
             }
         });
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "has dado click card2", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                startActivity(intent2);
             }
         });
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "has dado click card3", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                startActivity(intent3);
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "has dado click card4", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                startActivity(intent4);
             }
         });
 

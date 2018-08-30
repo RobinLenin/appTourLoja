@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView uidTextView;
-    //private BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
 
 
     public static String TOKEN = "";
@@ -36,16 +36,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-
-        //bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         //cargamos el fragmento predeterminado al comenzar.
-        //loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment());
         //getting bottom navigation view and attaching the listener
-        //bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        //bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null) {
             String name = user.getDisplayName();
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             uidTextView.setText(uid);
         } else {
             verInicioSesion();
-        }
+        }*/
 
 
         //if (AccessToken.getCurrentAccessToken() == null) {
