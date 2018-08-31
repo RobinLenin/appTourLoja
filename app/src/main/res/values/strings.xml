@@ -45,4 +45,5 @@
     <string name="msg_no_busqueda">No Busqueda</string>
     <string name="nombre">Nombre: </string>
     <string name="descripcion">Descripcion: </string>
+    <string name="title_activity_maps">Map</string>
 </resources>
