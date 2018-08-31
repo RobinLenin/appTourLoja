@@ -46,4 +46,7 @@
     <string name="nombre">Nombre: </string>
     <string name="descripcion">Descripcion: </string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="action_settings">Cerrar Sesión</string>
+
 </resources>

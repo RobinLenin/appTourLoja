@@ -6,14 +6,6 @@
     android:orientation="vertical"
     android:padding="6dp">
 
-    <!--dd
-    <ImageView
-        android:id="@+id/imgFilmDlg"
-        android:layout_width="260dip"
-        android:layout_height="290dip"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"/>
--->
 
     <TextView
         android:id="@+id/txtTituloDlg"

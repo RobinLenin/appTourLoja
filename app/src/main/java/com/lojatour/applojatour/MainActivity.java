@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,9 +23,9 @@ import com.lojatour.applojatour.controlador.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
-    private TextView nameTextView;
-    private TextView emailTextView;
-    private TextView uidTextView;
+    //private TextView nameTextView;
+    //private TextView emailTextView;
+    //private TextView uidTextView;
     private BottomNavigationView bottomNavigationView;
 
 
@@ -36,54 +37,78 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-        //cargamos el fragmento predeterminado al comenzar.
-        loadFragment(new HomeFragment());
-        //getting bottom navigation view and attaching the listener
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-       /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user != null) {
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            String uid = user.getUid();
+        if (user != null || !(Utilidades.isEmpty(MainActivity.TOKEN))) {
+            bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-            nameTextView.setText(name);
-            emailTextView.setText(email);
-            uidTextView.setText(uid);
+            //cargamos el fragmento predeterminado al comenzar.
+            loadFragment(new HomeFragment());
+            //getting bottom navigation view and attaching the listener
+            bottomNavigationView = findViewById(R.id.bottomNavigationView);
+            bottomNavigationView.setOnNavigationItemSelectedListener(this);
+            //String name = user.getDisplayName();
+            //String email = user.getEmail();
+            //Uri photoUrl = user.getPhotoUrl();
+            //String uid = user.getUid();
+
+            //nameTextView.setText(name);
+            //emailTextView.setText(email);
+            //uidTextView.setText(uid);
         } else {
-            verInicioSesion();
-        }*/
+            irLogin();
+        }
 
 
         //if (AccessToken.getCurrentAccessToken() == null) {
         //    irLogin();
         //}
     }
-
+/*
     private void verInicioSesion() {
         if (Utilidades.isEmpty(MainActivity.TOKEN)) {
             irLogin();
         } else {
-            nameTextView.setText(TOKEN);
+            //nameTextView.setText(TOKEN);
         }
     }
-
+*/
     private void irLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
 
-    public void logout(View view) {
+    public void logOut() {
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
         irLogin();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            logOut();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
