@@ -37,18 +37,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-
+        //cargamos el fragmento predeterminado al comenzar.
+        loadFragment(new HomeFragment());
+        //getting bottom navigation view and attaching the listener
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+/*
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null || !(Utilidades.isEmpty(MainActivity.TOKEN))) {
-            bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-            //cargamos el fragmento predeterminado al comenzar.
-            loadFragment(new HomeFragment());
-            //getting bottom navigation view and attaching the listener
-            bottomNavigationView = findViewById(R.id.bottomNavigationView);
-            bottomNavigationView.setOnNavigationItemSelectedListener(this);
             //String name = user.getDisplayName();
             //String email = user.getEmail();
             //Uri photoUrl = user.getPhotoUrl();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else {
             irLogin();
         }
-
+*/
 
         //if (AccessToken.getCurrentAccessToken() == null) {
         //    irLogin();

@@ -81,6 +81,9 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
 
         TextView tipo = (TextView)item.findViewById(R.id.tvTipo);
         tipo.setText(dataset.get(position).getTipo());
+        System.out.println("HORARIO: "+dataset.get(position).getHorarios());
+        TextView horario = (TextView)item.findViewById(R.id.tvHorario);
+        horario.setText(dataset.get(position).getHorarios());
 
 
         return  item;

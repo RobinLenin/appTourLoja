@@ -1,9 +1,14 @@
 package com.lojatour.applojatour;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -31,7 +36,7 @@ public class TodosLosSitios extends AppCompatActivity {
     private ListView listView;
     private RequestQueue requestQueue;//
     private Intent intentA1;
-
+    private String phone;
 
 
     @Override
@@ -39,8 +44,8 @@ public class TodosLosSitios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allsites);
 
-        listView= (ListView)findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
-        intentA1 = new Intent(getApplicationContext(),SitiosMasVisitados.class);
+        listView = (ListView) findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
+        intentA1 = new Intent(getApplicationContext(), SitiosMasVisitados.class);
 
         //listView.setEmptyView(findViewById(R.id.lista_vacia));
         listaAdaptadorWS = new ListaAdaptadorSitiosWs(this);//en el main hubiera ido this
@@ -51,13 +56,12 @@ public class TodosLosSitios extends AppCompatActivity {
         consultarSitiosWS();
 
 
-
         //este metodo se activa cuando se da click enu un item dela lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
-                SitioTuristicoWs sitio= listaAdaptadorWS.getItem(position);
+                SitioTuristicoWs sitio = listaAdaptadorWS.getItem(position);
 
                 muestraDialogo(sitio);
             }
@@ -69,26 +73,59 @@ public class TodosLosSitios extends AppCompatActivity {
     /**     *
      * @param sitio
      */
-    private void muestraDialogo(SitioTuristicoWs sitio){
+    private void muestraDialogo(SitioTuristicoWs sitio) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //
         View mView = getLayoutInflater().inflate(R.layout.dialog_sitio, null);
 
-       ImageView poster = (ImageView) mView.findViewById(R.id.imgFilmDlg);
+        ImageView poster = (ImageView) mView.findViewById(R.id.imgFilmDlg);
         Picasso.get().load(sitio.getRuta()).error(R.mipmap.ic_home).into(poster);
 
-        TextView titulo = (TextView)mView.findViewById(R.id.txtNombreDlg);
+        TextView titulo = (TextView) mView.findViewById(R.id.txtNombreDlg);
         titulo.setText(sitio.getNombre());
 
-        TextView descrip = (TextView)mView.findViewById(R.id.txtDescripDlg);
+        TextView descrip = (TextView) mView.findViewById(R.id.txtDescripDlg);
         descrip.setText(sitio.getDescripcion());
-        System.out.println("DESCRIP: "+sitio.getDescripcion());
+        //////////
+        TextView latitud = (TextView) mView.findViewById(R.id.txtLatitudDlg);
+        latitud.setText(sitio.getLatitud());
+
+        TextView longuitud = (TextView) mView.findViewById(R.id.txtLonguitudDlg);
+        longuitud.setText(sitio.getLonguitud());
+
+        TextView telefono = (TextView) mView.findViewById(R.id.txtTelefonoDlg);
+        telefono.setText(sitio.getTelefono());
+        phone = sitio.getTelefono();
+
+        TextView web = (TextView) mView.findViewById(R.id.txtSitioWebDlg);
+        web.setText(sitio.getSitioWeb());
+
 
         builder.setView(mView);
 
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+
+    public void onClickLlamada(View v) {
+
+        phone= "tel:"+phone;
+        System.out.println("ENTRO EN ONcLICKlLAMADA" + phone);
+        Intent i = new Intent(android.content.Intent.ACTION_CALL, Uri.parse(phone));
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            Toast.makeText(getApplicationContext(), "Aun no tienes permisos para llamar", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        startActivity(i);
     }
 
 
@@ -102,10 +139,6 @@ public class TodosLosSitios extends AppCompatActivity {
                         //cuando son de este tipo no va con el this va con el getApplicationContext
                         listaAdaptadorWS = new ListaAdaptadorSitiosWs(Arrays.asList(response),getApplicationContext());//en el main hubiera ido con getApplicationContext()
                         listView.setAdapter(listaAdaptadorWS);
-                        System.out.println("HolaaaXXXXXXXXX");
-                       // consultarImagenWS("5");
-
-                Log.i("msgResponse",response.length+"");
 
                         //dialog();/////////
                     }

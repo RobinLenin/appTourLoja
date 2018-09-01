@@ -57,6 +57,89 @@
         android:text="@string/nombre"
         android:textSize="13sp" />
 
+    <TextView
+        android:id="@+id/txtLatitudB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Latitud: "
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/txtLatitudDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="mbre"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/txtLonguitudB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Longuitud: "
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtLonguitudDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/nombre"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/txtTelefonoB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Telefono: "
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtTelefonoDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/nombre"
+        android:textSize="13sp" />
+
+
+    <TextView
+        android:id="@+id/txtSitioWebdB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Sitio Web: "
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtSitioWebDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:paddingLeft="10dp"
+        android:text="@string/nombre"
+        android:textSize="13sp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCall"
+        android:src="@drawable/ic_place_black_24dp"
+        android:drawablePadding="8dp"
+        android:onClick="onClickLlamada"/>
+    <TextView
+        android:id="@+id/txtVacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+
 
 
 
