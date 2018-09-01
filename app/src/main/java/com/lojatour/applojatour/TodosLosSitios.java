@@ -1,5 +1,6 @@
 package com.lojatour.applojatour;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.lojatour.applojatour.controlador.adaptador.ListaAdaptadorSitiosWs;
 import com.lojatour.applojatour.controlador.ws.Conexion;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
+import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
@@ -27,6 +30,7 @@ public class TodosLosSitios extends AppCompatActivity {
     private ListaAdaptadorSitiosWs listaAdaptadorWS;
     private ListView listView;
     private RequestQueue requestQueue;//
+    private Intent intentA1;
 
 
 
@@ -36,6 +40,7 @@ public class TodosLosSitios extends AppCompatActivity {
         setContentView(R.layout.activity_allsites);
 
         listView= (ListView)findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
+        intentA1 = new Intent(getApplicationContext(),SitiosMasVisitados.class);
 
         //listView.setEmptyView(findViewById(R.id.lista_vacia));
         listaAdaptadorWS = new ListaAdaptadorSitiosWs(this);//en el main hubiera ido this
@@ -58,22 +63,27 @@ public class TodosLosSitios extends AppCompatActivity {
             }
         });
 
+
     }
+
+    /**     *
+     * @param sitio
+     */
     private void muestraDialogo(SitioTuristicoWs sitio){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //
-        View mView = getLayoutInflater().inflate(R.layout.dialog_pelicula, null);
+        View mView = getLayoutInflater().inflate(R.layout.dialog_sitio, null);
 
-       /* ImageView poster = (ImageView) mView.findViewById(R.id.imgFilmDlg);
-        Picasso.with(getApplicationContext()).load(pelicula.getPoster()).error(R.mipmap.ic_home).fit().centerInside().into(poster);
-*/
+       ImageView poster = (ImageView) mView.findViewById(R.id.imgFilmDlg);
+        Picasso.get().load(sitio.getRuta()).error(R.mipmap.ic_home).into(poster);
+
         TextView titulo = (TextView)mView.findViewById(R.id.txtNombreDlg);
         titulo.setText(sitio.getNombre());
 
         TextView descrip = (TextView)mView.findViewById(R.id.txtDescripDlg);
         descrip.setText(sitio.getDescripcion());
-
+        System.out.println("DESCRIP: "+sitio.getDescripcion());
 
         builder.setView(mView);
 

@@ -8,4 +8,7 @@ public class VisitaWs {
     public String me_gusta;
     public String sitioTuristico_id;
     public String id_usuario;
+    public String contador;
+    public String ruta;
+    public String nombre;
 }

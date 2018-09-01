@@ -81,14 +81,14 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/cerclebackgroundpink"
-                        android:src="@mipmap/ic_search"
+                        android:src="@drawable/ic_map_black_24dp"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Buscar Lugar"/>
+                        android:text="Ir a Mapa"/>
 
 
                 </LinearLayout>
@@ -124,7 +124,7 @@
                         android:layout_height="64dp"
                         android:background="@drawable/cerclebackgroundgreen"
                         android:padding="10dp"
-                        android:src="@mipmap/ic_camera_alt" />
+                        android:src="@drawable/ic_event_note_black_24dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
                         android:layout_height="64dp"
                         android:background="@drawable/cerclebackgroundyello"
                         android:padding="10dp"
-                        android:src="@mipmap/ic_home" />
+                        android:src="@drawable/ic_place_black_24dp" />
 
                     <TextView
                         android:layout_width="wrap_content"

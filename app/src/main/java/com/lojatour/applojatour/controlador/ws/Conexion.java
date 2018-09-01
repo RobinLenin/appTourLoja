@@ -9,6 +9,7 @@ import com.android.volley.Response;
 import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
+import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
 
 import java.util.HashMap;
 
@@ -117,5 +118,25 @@ public class Conexion {
 
         return request;
 
+    }
+
+    public static VolleyPeticion<VisitaWs[]> getListaSitiosMasVisitados(
+            @NonNull final Context context,
+            @NonNull Response.Listener<VisitaWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    )
+    {
+
+        final String url = API_URL + "visita/listarMasVisitadosTest";
+
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(VisitaWs[].class);
+
+        return peticion;
     }
 }

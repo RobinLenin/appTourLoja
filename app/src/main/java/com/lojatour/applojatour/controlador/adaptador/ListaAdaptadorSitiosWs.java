@@ -19,8 +19,6 @@ import com.lojatour.applojatour.R;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.lojatour.applojatour.TodosLosSitios;
 import com.squareup.picasso.Picasso;
 
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
@@ -38,8 +36,8 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
         super(context, R.layout.item_lista, data);//no funcionaba porque faltaba el parametro data el el super
         this.dataset=data;
         this.mContext=context;
-        Log.i("msg","entro al constructorBBBBB ListaAdaptador");
     }
+
     public ListaAdaptadorSitiosWs(Context context) {
         super(context, R.layout.lista_vacia,new ArrayList<SitioTuristicoWs>());//
         this.dataset=new ArrayList<SitioTuristicoWs>();
@@ -47,12 +45,15 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
 
     }
 
-
-    static class ViewHolder {
-        protected TextView tvNombre;
-
-    }
-
+    /**
+     * Esta función es llamada automáticamente cuando se llena un listView mediante un adaptador
+     * de manera iterativa, donde el array que recibe el constructor de esta clase es del tipo estático
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return Un objeto tipo View para ser insertado en el layout respectivo
+     *
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -78,8 +79,8 @@ public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
         TextView nombre = (TextView)item.findViewById(R.id.tvNombre);
         nombre.setText(dataset.get(position).getNombre());
 
-        TextView descrip = (TextView)item.findViewById(R.id.tvDescripcion);
-        descrip.setText(dataset.get(position).getDescripcion());
+        TextView tipo = (TextView)item.findViewById(R.id.tvTipo);
+        tipo.setText(dataset.get(position).getTipo());
 
 
         return  item;

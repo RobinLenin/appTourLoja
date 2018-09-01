@@ -21,4 +21,7 @@
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
     <color name="graylight">#fafafa</color>
+
+    <color name="pinkDialog">#f74884</color>
+    <color name="blackDialog">#fd000000</color>
 </resources>

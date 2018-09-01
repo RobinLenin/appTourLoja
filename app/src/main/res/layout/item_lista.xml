@@ -12,7 +12,8 @@
         android:id="@+id/imgFilm"
         android:layout_width="75dip"
         android:layout_height="75dip"
-        android:src="@mipmap/ic_camera_alt"/>
+        android:src="@mipmap/ic_camera_alt"
+        />
 
     <TextView
         android:id="@+id/tvNombre"
@@ -24,18 +25,33 @@
         android:typeface="sans"
         android:textSize="15dip"
         android:textStyle="bold"
-        android:text="TextView"/>
+        android:text="TextView"
+        android:paddingLeft="4dp"/>
 
     <TextView
-        android:id="@+id/tvDescripcion"
+        android:id="@+id/tvTipoTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imgFilm"
         android:layout_toRightOf="@+id/imgFilm"
         android:textColor="#343434"
-        android:textSize="10dip"
-        android:layout_marginTop="1dip"
-        android:text="TextView"/>
+        android:textSize="15dip"
+        android:layout_marginTop="3dip"
+        android:text="Tipo: "
+        android:textStyle="bold"
+        android:paddingLeft="3dp"/>
+
+    <TextView
+        android:id="@+id/tvTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgFilm"
+        android:layout_toRightOf="@+id/tvTipoTitulo"
+        android:textColor="#343434"
+        android:textSize="15dip"
+        android:layout_marginTop="3dip"
+        android:text="TextView"
+        />
 
 
 </RelativeLayout>
