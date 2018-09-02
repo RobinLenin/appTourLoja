@@ -7,10 +7,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
@@ -145,6 +147,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
 
             case R.id.searchItem:
+                Toast toast1 = Toast.makeText(getApplicationContext(),
+                        "Has llamado al SearchFragment desde el MainActivity",
+                        Toast.LENGTH_SHORT);
+                toast1.show();
                 fragment = new SearchFragment();
                 break;
 

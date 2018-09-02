@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+
+    <EditText
+        android:id="@+id/txt_buscar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Dashboard"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:inputType="textNoSuggestions"
+        />
+    <!--agregado el inputype para intentar solucionar el error de SPAN_EXCLUSIVE_EXCLUSIVE-->
+
+    <Button
+        android:id="@+id/btn_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_buscar"
+        android:gravity="center"
+        android:background="@color/pinkDialog"
+        android:text="@string/buscar"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        />
+    <ListView
+        android:id="@+id/mi_listaBuscar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_buscar"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:background="@color/pinkDialog">
+
+    </ListView>
+
+
 
 </RelativeLayout>

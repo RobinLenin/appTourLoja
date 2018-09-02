@@ -41,7 +41,15 @@ public class Conexion {
 
     }
 
-
+    /**
+     *
+     * @param context
+     * @param token
+     * @param id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,
@@ -139,6 +147,31 @@ public class Conexion {
 
         return peticion;
     }
+
+    public static VolleyPeticion<SitioTuristicoWs[]> getSitiosBuscar(
+            @NonNull final Context context,
+            @NonNull String titulo,
+            @NonNull Response.Listener<SitioTuristicoWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    )
+    {
+        titulo = titulo.replace(" ","+");
+        final String url = API_URL + "sitio/buscarTest/"+titulo;
+
+        VolleyPeticion peticion = new VolleyPeticion(
+                context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(SitioTuristicoWs[].class);
+
+        return peticion;
+
+
+    }
+
 
 
 
