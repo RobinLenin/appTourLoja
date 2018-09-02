@@ -24,6 +24,7 @@
     <string name="email">Email</string>
     <string name="btn_guardar">Guardar</string>
     <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_registrar">Registrar</string>
 
 
     <string name="usuarioVacio">Fantan datos en usuario</string>
@@ -48,6 +49,10 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="action_settings">Cerrar Sesión</string>
+<<<<<<< HEAD
     <string name="txt_busqueda_vacio">Input Vacio,Please ingrese un valor</string>
+=======
+    <string name="itemEditPerfil">EditarPerfil</string>
+>>>>>>> developer
 
 </resources>

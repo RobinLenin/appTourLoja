@@ -42,7 +42,13 @@ public class TodosLosSitios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allsites);
 
+<<<<<<< HEAD
         listView = (ListView) findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
+=======
+
+
+        listView= (ListView)findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
+>>>>>>> developer
 
         //listView.setEmptyView(findViewById(R.id.lista_vacia));
         listaAdaptadorWS = new ListaAdaptadorSitiosWs(this);//en el main hubiera ido this

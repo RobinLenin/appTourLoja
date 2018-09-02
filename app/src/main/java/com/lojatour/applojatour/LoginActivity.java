@@ -1,10 +1,12 @@
 package com.lojatour.applojatour;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,15 +31,25 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 import com.lojatour.applojatour.controlador.ws.Conexion;
+import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.VolleyProcesadorResultado;
 import com.lojatour.applojatour.controlador.ws.VolleyTiposError;
+import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+
+
+    //Variables de registro de usuario
+    public String mensaje;
+    public String siglas;
 
     private LoginButton loginButtonFacebook;
     private CallbackManager callbackManager;
@@ -138,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(UsuarioLoginJson response) {
                                 MainActivity.TOKEN = response.token;
                                 MainActivity.ID_EXTERNAL = response.id;
-                                Toast.makeText(getApplicationContext(), "Bienvenido" + response.nombre,
+                                Toast.makeText(getApplicationContext(), "Bienvenido " + response.nombre,
                                         Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 irPantallaPrincipal();
@@ -163,24 +175,93 @@ public class LoginActivity extends AppCompatActivity {
     private void muestraDialogo() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //
         View mView = getLayoutInflater().inflate(R.layout.dialog_registrar, null);
 
-        TextView titulo = (TextView) mView.findViewById(R.id.txtTituloDlg);
-        //titulo.setText(usuario.nombre);
 
-        TextView anio = (TextView) mView.findViewById(R.id.txtYearDlg);
-        //anio.setText(usuario.id);
-
-        TextView tipo = (TextView) mView.findViewById(R.id.txt4Dlg);
-        //tipo.setText(usuario.correo);
+        final EditText edit_Usuario = (EditText) mView.findViewById(R.id.edit_Usuario);
+        final EditText edit_Clave = (EditText) mView.findViewById(R.id.edit_Clave);
+        final EditText edit_RClave = (EditText) mView.findViewById(R.id.edit_RClave);
+        final EditText edit_Email = (EditText) mView.findViewById(R.id.edit_Email);
+        final EditText edit_Edad = (EditText) mView.findViewById(R.id.edit_Edad);
 
 
         builder.setView(mView);
-
-        AlertDialog alert = builder.create();
+        final AlertDialog alert = builder.create();
         alert.show();
+
+        Button btn_cancelar = (Button) mView.findViewById(R.id.dialogButtonCancelar);
+
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
+            }
+        });
+
+        Button btn_registrar = (Button) mView.findViewById(R.id.dialogButtonRegistrar);
+        btn_registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UsuarioWs usuario = new UsuarioWs();
+                if(edit_Clave.getText().toString().equalsIgnoreCase(edit_RClave.getText().toString())){
+
+                    usuario.setNombre(edit_Usuario.getText().toString());
+                    usuario.setClave(edit_Clave.getText().toString());
+                    usuario.setCorreo(edit_Email.getText().toString());
+                    usuario.setEdad(edit_Edad.getText().toString());
+                    usuario.setGenero("0");
+                }else {
+                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinsiden",
+                    Toast.LENGTH_SHORT).show();
+                }
+                if(usuario != null){
+                registrarUsuario(usuario, alert);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Existen errores en los datos",
+                    Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+    private void registrarUsuario(final UsuarioWs usuario, final Dialog dialogo){
+
+        HashMap<String, String> mapa = new HashMap<>();
+        mapa.put("nombre", usuario.getNombre());
+        mapa.put("clave", usuario.getClave());
+        mapa.put("correo", usuario.getCorreo());
+        mapa.put("edad", usuario.getEdad());
+        mapa.put("genero", usuario.getGenero());
+        VolleyPeticion<ResponseWs> registro = Conexion.registrarUsuario(
+                getApplicationContext(),
+                mapa,
+                new Response.Listener<ResponseWs>() {
+                    @Override
+                    public void onResponse(ResponseWs response) {
+                        mensaje = response.mensaje;
+                        siglas = response.siglas;
+                        System.out.println(mensaje+ siglas);
+
+                        Toast.makeText(getApplicationContext(), "Usuario " +
+                                usuario.getNombre() + " creado, Ingrese con su correo y contraseña",
+                                Toast.LENGTH_SHORT).show();
+                        irPantallaPrincipal();
+                        dialogo.dismiss();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
+                        Toast.makeText(getApplicationContext(), errores.errorMessage,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(registro);
+    }
+
+
 
     private void handleFacebookAccessToken(AccessToken accessToken) {
         progressBar.setVisibility(View.VISIBLE);

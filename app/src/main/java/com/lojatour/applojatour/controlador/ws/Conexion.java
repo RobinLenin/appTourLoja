@@ -7,9 +7,14 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
+import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
+<<<<<<< HEAD
 import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
+=======
+import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
+>>>>>>> developer
 
 import java.util.HashMap;
 
@@ -41,6 +46,7 @@ public class Conexion {
 
     }
 
+<<<<<<< HEAD
     /**
      *
      * @param context
@@ -50,6 +56,50 @@ public class Conexion {
      * @param errorListener
      * @return
      */
+=======
+    public static VolleyPeticion<ResponseWs> registrarUsuario(
+            @NonNull final Context context,
+            @NonNull final HashMap mapa,
+            @NonNull Response.Listener<ResponseWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "usuario/registrar";
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.POST,
+                url,
+                mapa,
+                HashMap.class,
+                String.class,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(ResponseWs.class);
+        return request;
+
+
+    }
+    public static VolleyPeticion<UsuarioWs> getUsuario(
+            @NonNull final Context context,
+            @NonNull String external_id,
+            @NonNull Response.Listener<UsuarioWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+
+        final String url = API_URL + "usuario/buscar/?external_id=" + external_id;
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.POST,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(UsuarioWs.class);
+        return peticion;
+    }
+
+
+>>>>>>> developer
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,

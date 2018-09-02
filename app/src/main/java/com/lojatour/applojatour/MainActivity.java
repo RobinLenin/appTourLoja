@@ -5,12 +5,15 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ import com.lojatour.applojatour.controlador.fragmento.HomeFragment;
 import com.lojatour.applojatour.controlador.fragmento.MapaFragment;
 import com.lojatour.applojatour.controlador.fragmento.ProfileFragment;
 import com.lojatour.applojatour.controlador.utilidades.Utilidades;
+import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         if (user != null || !(Utilidades.isEmpty(MainActivity.TOKEN))) {
 
+<<<<<<< HEAD
             //String name = user.getDisplayName();
             //String email = user.getEmail();
             //Uri photoUrl = user.getPhotoUrl();
@@ -59,6 +64,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             //nameTextView.setText(name);
             //emailTextView.setText(email);
             //uidTextView.setText(uid);
+=======
+            //cargamos el fragmento predeterminado al comenzar.
+            loadFragment(new HomeFragment());
+            //getting bottom navigation view and attaching the listener
+            bottomNavigationView = findViewById(R.id.bottomNavigationView);
+            bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+>>>>>>> developer
         } else {
             irLogin();
         }
@@ -90,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         LoginManager.getInstance().logOut();
         irLogin();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -105,12 +119,68 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.cerrarSesion) {
             logOut();
+            return true;
+        }
+        if (id == R.id.item_editPerfil) {
+            muestraDialogo();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void muestraDialogo() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.dialog_registrar, null);
+
+
+        final EditText edit_Usuario = (EditText) mView.findViewById(R.id.edit_Usuario);
+        final EditText edit_Clave = (EditText) mView.findViewById(R.id.edit_Clave);
+        final EditText edit_RClave = (EditText) mView.findViewById(R.id.edit_RClave);
+        final EditText edit_Email = (EditText) mView.findViewById(R.id.edit_Email);
+        final EditText edit_Edad = (EditText) mView.findViewById(R.id.edit_Edad);
+
+
+        builder.setView(mView);
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+        Button btn_cancelar = (Button) mView.findViewById(R.id.dialogButtonCancelar);
+
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
+            }
+        });
+
+        /*Button btn_registrar = (Button) mView.findViewById(R.id.dialogButtonRegistrar);
+        btn_registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UsuarioWs usuario = new UsuarioWs();
+                if(edit_Clave.getText().toString().equalsIgnoreCase(edit_RClave.getText().toString())){
+
+                    usuario.setNombre(edit_Usuario.getText().toString());
+                    usuario.setClave(edit_Clave.getText().toString());
+                    usuario.setCorreo(edit_Email.getText().toString());
+                    usuario.setEdad(edit_Edad.getText().toString());
+                    usuario.setGenero("0");
+                }else {
+                    Toast.makeText(getApplicationContext(), "Las contraseñas no coinsiden",
+                            Toast.LENGTH_SHORT).show();
+                }
+                if(usuario != null){
+                    registrarUsuario(usuario, alert);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Existen errores en los datos",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });*/
     }
 
 
