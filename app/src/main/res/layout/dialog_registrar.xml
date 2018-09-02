@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+
+    <TextView
+        android:id="@+id/txtUsuarioDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usuario"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edit_Usuario"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"/>
+
+
+    <TextView
+        android:id="@+id/txtClaveDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clave"
+        android:textSize="19sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/edit_Clave"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/txtRCLaveDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repetir clave"
+        android:textSize="19sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edit_RClave"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/txtEmailDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="19sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edit_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/txtEdadDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edad"
+        android:textSize="19sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edit_Edad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:id="@+id/botonera"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="0">
+
+        <Button
+            android:id="@+id/dialogButtonCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_cancelar"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+
+            />
+
+        <Button
+            android:id="@+id/dialogButtonRegistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_registrar"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
