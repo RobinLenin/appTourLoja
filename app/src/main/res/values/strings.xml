@@ -49,5 +49,6 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="action_settings">Cerrar Sesión</string>
+    <string name="itemEditPerfil">EditarPerfil</string>
 
 </resources>

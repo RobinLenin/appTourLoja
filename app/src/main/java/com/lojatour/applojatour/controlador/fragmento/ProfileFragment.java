@@ -44,11 +44,12 @@ public class ProfileFragment extends Fragment {
         txtNombre = (TextView)view.findViewById(R.id.txtNombre);
         txtCorreo = (TextView)view.findViewById(R.id.txtEmail);
         txtEdad = (TextView)view.findViewById(R.id.txtEdad);
-        imgPerfil = (ImageView) view.findViewById(R.id.imgPerfil);
+
 
         requestQueue = Volley.newRequestQueue(getContext());
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null){
+            imgPerfil = (ImageView) view.findViewById(R.id.imgPerfil);
             String nombre = user.getDisplayName();
             String email = user.getEmail();
             String uid = user.getUid();
@@ -57,7 +58,6 @@ public class ProfileFragment extends Fragment {
             txtNombre.setText(nombre);
             txtCorreo.setText(email);
         }
-        System.out.println(MainActivity.ID_EXTERNAL);
         //oyentes();
 
         return view;
