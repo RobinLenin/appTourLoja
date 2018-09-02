@@ -1,6 +1,6 @@
 package com.lojatour.applojatour;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -35,7 +34,6 @@ public class TodosLosSitios extends AppCompatActivity {
     private ListaAdaptadorSitiosWs listaAdaptadorWS;
     private ListView listView;
     private RequestQueue requestQueue;//
-    private Intent intentA1;
     private String phone;
 
 
@@ -45,7 +43,6 @@ public class TodosLosSitios extends AppCompatActivity {
         setContentView(R.layout.activity_allsites);
 
         listView = (ListView) findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
-        intentA1 = new Intent(getApplicationContext(), SitiosMasVisitados.class);
 
         //listView.setEmptyView(findViewById(R.id.lista_vacia));
         listaAdaptadorWS = new ListaAdaptadorSitiosWs(this);//en el main hubiera ido this
