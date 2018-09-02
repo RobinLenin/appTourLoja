@@ -35,6 +35,8 @@ public class TodosLosSitios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allsites);
 
+
+
         listView= (ListView)findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
 
         //listView.setEmptyView(findViewById(R.id.lista_vacia));

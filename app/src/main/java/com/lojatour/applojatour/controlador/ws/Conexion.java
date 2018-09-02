@@ -65,6 +65,23 @@ public class Conexion {
 
 
     }
+    public static VolleyPeticion<UsuarioWs> getUsuario(
+            @NonNull final Context context,
+            @NonNull String external_id,
+            @NonNull Response.Listener<UsuarioWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+
+        final String url = API_URL + "usuario/buscar/?external_id=" + external_id;
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.POST,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(UsuarioWs.class);
+        return peticion;
+    }
 
 
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(

@@ -49,14 +49,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             //getting bottom navigation view and attaching the listener
             bottomNavigationView = findViewById(R.id.bottomNavigationView);
             bottomNavigationView.setOnNavigationItemSelectedListener(this);
-            //String name = user.getDisplayName();
-            //String email = user.getEmail();
-            //Uri photoUrl = user.getPhotoUrl();
-            //String uid = user.getUid();
 
-            //nameTextView.setText(name);
-            //emailTextView.setText(email);
-            //uidTextView.setText(uid);
         } else {
             irLogin();
         }
