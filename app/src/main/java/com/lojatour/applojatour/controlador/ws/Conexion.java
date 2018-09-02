@@ -7,8 +7,10 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
+import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
+import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
 
 import java.util.HashMap;
 
@@ -35,6 +37,30 @@ public class Conexion {
         );
 
         request.setResponseClass(UsuarioLoginJson.class);
+        return request;
+
+
+    }
+
+    public static VolleyPeticion<ResponseWs> registrarUsuario(
+            @NonNull final Context context,
+            @NonNull final HashMap mapa,
+            @NonNull Response.Listener<ResponseWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "usuario/registrar";
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.POST,
+                url,
+                mapa,
+                HashMap.class,
+                String.class,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(ResponseWs.class);
         return request;
 
 

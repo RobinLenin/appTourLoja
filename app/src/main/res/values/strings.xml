@@ -24,6 +24,7 @@
     <string name="email">Email</string>
     <string name="btn_guardar">Guardar</string>
     <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_registrar">Registrar</string>
 
 
     <string name="usuarioVacio">Fantan datos en usuario</string>
