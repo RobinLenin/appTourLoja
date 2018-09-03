@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.searchItem:
                 Toast toast1 = Toast.makeText(getApplicationContext(),
-                        "Has llamado al SearchFragment desde el MainActivity",
+                        "Ha llamado al SearchFragment desde MainActivity",
                         Toast.LENGTH_SHORT);
                 toast1.show();
                 fragment = new SearchFragment();

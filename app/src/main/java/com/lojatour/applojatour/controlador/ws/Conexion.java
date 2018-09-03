@@ -43,7 +43,6 @@ public class Conexion {
         request.setResponseClass(UsuarioLoginJson.class);
         return request;
 
-
     }
 
 
@@ -240,7 +239,28 @@ public class Conexion {
 
     }
 
+    public static VolleyPeticion<VisitaWs> setLikeOrVisita(
+            @NonNull final Context context,
+            @NonNull final HashMap mapa,
+            @NonNull Response.Listener<VisitaWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "visita/registrarTest";
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.POST,
+                url,
+                mapa,
+                HashMap.class,
+                String.class,
+                responseListener,
+                errorListener
+        );
 
+        request.setResponseClass(VisitaWs.class);
+        return request;
+
+    }
 
 
 }

@@ -27,11 +27,15 @@ import com.android.volley.toolbox.Volley;
 import com.lojatour.applojatour.controlador.adaptador.ListaAdaptadorSitiosWs;
 import com.lojatour.applojatour.controlador.ws.Conexion;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
+import com.lojatour.applojatour.controlador.ws.VolleyProcesadorResultado;
+import com.lojatour.applojatour.controlador.ws.VolleyTiposError;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
+import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
 import com.squareup.picasso.Picasso;
 
 import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import xyz.hanks.library.bang.SmallBangView;
 
@@ -46,8 +50,8 @@ public class TodosLosSitios extends AppCompatActivity {
 
     private SmallBangView mSmallBang;
     private Button mButton;
-
-
+    private String externalSite;
+    private String externalUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +131,9 @@ public class TodosLosSitios extends AppCompatActivity {
             public void onClick(View view) {
                 if (like_heart.isSelected()) {
                     like_heart.setSelected(false);
+                    toast("DisLike :(");
+                    ///////////////metodo para DisLike
+                    likeOrDislike();
 
                 } else {
                     like_heart.setSelected(true);
@@ -135,20 +142,50 @@ public class TodosLosSitios extends AppCompatActivity {
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
                             toast("Like +1");
-                            String externalSitio = sitio.getExternal_id();
-                            System.out.println("EXTERNAL DEL SITIO: "+externalSitio);
-                            System.out.println("EXTERNAL DEL USER desde TodosLosSitios: "+MainActivity.ID_EXTERNAL);
-                            //metodoDarLike()
+                            externalSite = sitio.getExternal_id();
+                            externalUser = MainActivity.ID_EXTERNAL;
+
+                            ////////////metodo DarLike
+                            likeOrDislike();
                         }
                     });
-                }
-            }
-        });
+
+                }//Termina el else
+
+            }//termina el metodo onClick
+
+        });//termina el listener del like_heart
 
 
         alert.show();
 
     }
+    private void likeOrDislike(){
+        HashMap<String, String> mapa = new HashMap<>();
+        mapa.put("external", externalUser);
+        mapa.put("externalSitio", externalSite);
+        VolleyPeticion<VisitaWs> liker = Conexion.setLikeOrVisita(
+                getApplicationContext(),
+                mapa,
+                new Response.Listener<VisitaWs>() {
+                    @Override
+                    public void onResponse(VisitaWs response) {
+                        Toast.makeText(getApplicationContext(), "Se ha modificado o editado un registro en visita",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
+                        Toast.makeText(getApplicationContext(), errores.errorMessage,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(liker);
+    }
+
 
 
     public void onClickLlamada(View v) {

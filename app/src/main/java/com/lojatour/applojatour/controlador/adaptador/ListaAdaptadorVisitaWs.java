@@ -85,9 +85,8 @@ public class ListaAdaptadorVisitaWs extends ArrayAdapter<VisitaWs> {
         TextView contador = (TextView)item.findViewById(R.id.tvContador);
         contador.setText(dataset.get(position).getContador());
 
-
-
         return  item;
+
     }
 
 }
