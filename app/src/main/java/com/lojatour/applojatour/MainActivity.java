@@ -45,17 +45,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-        //cargamos el fragmento predeterminado al comenzar.
-        loadFragment(new HomeFragment());
-        //getting bottom navigation view and attaching the listener
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-/*
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null || !(Utilidades.isEmpty(MainActivity.TOKEN))) {
 
-<<<<<<< HEAD
+
             //String name = user.getDisplayName();
             //String email = user.getEmail();
             //Uri photoUrl = user.getPhotoUrl();
@@ -64,18 +60,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             //nameTextView.setText(name);
             //emailTextView.setText(email);
             //uidTextView.setText(uid);
-=======
+
             //cargamos el fragmento predeterminado al comenzar.
             loadFragment(new HomeFragment());
             //getting bottom navigation view and attaching the listener
             bottomNavigationView = findViewById(R.id.bottomNavigationView);
             bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
->>>>>>> developer
+
         } else {
             irLogin();
         }
-*/
+
 
         //if (AccessToken.getCurrentAccessToken() == null) {
         //    irLogin();
