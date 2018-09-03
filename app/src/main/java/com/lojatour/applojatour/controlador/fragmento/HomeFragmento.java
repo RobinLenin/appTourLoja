@@ -1,5 +1,6 @@
 package com.lojatour.applojatour.controlador.fragmento;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.Arrays;
 
 import com.lojatour.applojatour.MainActivity;
+import com.lojatour.applojatour.MapsActivity;
 import com.lojatour.applojatour.R;
 
 import com.lojatour.applojatour.controlador.adaptador.ListaAdaptadorSitiosWs;
@@ -32,6 +35,8 @@ public class HomeFragmento extends Fragment {
     private ListView listView;
     private ListaAdaptadorSitiosWs listaAdaptadorSitiosWs;
     private RequestQueue requestQueue;
+
+    private Button btnIrRuta;
 
     //singleton
     public static HomeFragmento newInstance(){
@@ -56,9 +61,23 @@ public class HomeFragmento extends Fragment {
         //y se muestra el subview
         requestQueue= Volley.newRequestQueue(getActivity());
         consultaSitioTuristicoWs();
+        btnIrRuta = (Button) rootView.findViewById(R.id.btnIrRuta);
+        btnIrRuta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irMapa();
+            }
+        });
 
         return rootView;
 
+    }
+
+
+    public void irMapa(){
+        Intent intent = new Intent(getActivity(), MapsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private  void consultaSitioTuristicoWs(){

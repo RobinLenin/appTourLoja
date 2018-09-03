@@ -54,8 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker marcador;
     double lat = 0.0;
     double lng = 0.0;
-    double latST = -3.97161200;
-    double lngST = -79.20123400;
+    double latST = TodosLosSitios.latST;
+    double lngST = TodosLosSitios.lngST;
     String mensaje1;
     String direccion = "";
 

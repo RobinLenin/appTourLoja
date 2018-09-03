@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(UsuarioLoginJson response) {
                                 MainActivity.TOKEN = response.token;
-                                MainActivity.ID_EXTERNAL = response.id;
+                                MainActivity.ID_EXTERNAL = response.external_id;
                                 Toast.makeText(getApplicationContext(), "Bienvenido " + response.nombre,
                                         Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);

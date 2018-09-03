@@ -31,7 +31,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alex John"
+                android:text="@string/usuario"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="alex@gmail.com"/>
+                android:text="@string/email"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -166,6 +166,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnEditarPerfil"
         android:textColor="#fff"
         android:background="@drawable/buttonstyleithgradient"
         android:layout_marginTop="25dp"

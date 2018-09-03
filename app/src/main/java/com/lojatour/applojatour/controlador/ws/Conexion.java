@@ -85,9 +85,9 @@ public class Conexion {
             @NonNull Response.ErrorListener errorListener
     ){
 
-        final String url = API_URL + "usuario/buscar/?external_id=" + external_id;
+        final String url = API_URL + "usuario/buscar/"+external_id;
         VolleyPeticion peticion = new VolleyPeticion(context,
-                Request.Method.POST,
+                Request.Method.GET,
                 url,
                 responseListener,
                 errorListener);
@@ -96,7 +96,27 @@ public class Conexion {
         return peticion;
     }
 
+    public static VolleyPeticion<ResponseWs> modificarUsuario(
+            @NonNull final Context context,
+            @NonNull String external_id,
+            @NonNull final HashMap mapa,
+            @NonNull Response.Listener<ResponseWs> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
 
+        final String url = API_URL + "usuario/modificar/"+external_id;
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.POST,
+                url,
+                mapa,
+                HashMap.class,
+                String.class,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(ResponseWs.class);
+        return peticion;
+    }
 
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,

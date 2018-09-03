@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,12 +36,16 @@ public class TodosLosSitios extends AppCompatActivity {
     private ListView listView;
     private RequestQueue requestQueue;//
     private String phone;
+    public static double latST = 0.0;
+    public static double lngST = 0.0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allsites);
+
 
 
         listView = (ListView) findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
@@ -73,6 +78,7 @@ public class TodosLosSitios extends AppCompatActivity {
 
     }
 
+
     /**     *
      * @param sitio
      */
@@ -93,9 +99,12 @@ public class TodosLosSitios extends AppCompatActivity {
         //////////
         TextView latitud = (TextView) mView.findViewById(R.id.txtLatitudDlg);
         latitud.setText(sitio.getLatitud());
+        //
+        latST = Double.parseDouble(sitio.getLatitud());
 
         TextView longuitud = (TextView) mView.findViewById(R.id.txtLonguitudDlg);
         longuitud.setText(sitio.getLonguitud());
+        lngST = Double.parseDouble(sitio.getLonguitud());
 
         TextView telefono = (TextView) mView.findViewById(R.id.txtTelefonoDlg);
         telefono.setText(sitio.getTelefono());
