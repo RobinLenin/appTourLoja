@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appLojaTour</string>
+    <string name="app_name">Loja Tour</string>
 
     //Crea cadenas para el identificador de tu aplicación de Facebook
     <string name="facebook_app_id">249394119238617</string>
