@@ -50,26 +50,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_map_black_24dp);
+        getSupportActionBar().setIcon(R.mipmap.ic_actionloja_round);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
-        //cargamos el fragmento predeterminado al comenzar.
-        loadFragment(new HomeFragment());
-        //getting bottom navigation view and attaching the listener
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-     /*   FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null || !(Utilidades.isEmpty(MainActivity.TOKEN))) {
-<<<<<<< Updated upstream
+
             //cargamos el fragmento predeterminado al comenzar.
             loadFragment(new HomeFragment());
             //getting bottom navigation view and attaching the listener
             bottomNavigationView = findViewById(R.id.bottomNavigationView);
             bottomNavigationView.setOnNavigationItemSelectedListener(this);
-=======
 
 
             //String name = user.getDisplayName();
@@ -81,13 +76,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             //emailTextView.setText(email);
             //uidTextView.setText(uid);
 
-
->>>>>>> Stashed changes
-
-
         } else {
             irLogin();
-        }*/
+        }
 
     }
 

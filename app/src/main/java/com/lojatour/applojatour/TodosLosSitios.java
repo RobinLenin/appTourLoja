@@ -1,6 +1,8 @@
 package com.lojatour.applojatour;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -28,7 +30,10 @@ import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
 import com.squareup.picasso.Picasso;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
+
+import xyz.hanks.library.bang.SmallBangView;
 
 public class TodosLosSitios extends AppCompatActivity {
 
@@ -39,6 +44,9 @@ public class TodosLosSitios extends AppCompatActivity {
     public static double latST = 0.0;
     public static double lngST = 0.0;
 
+    private SmallBangView mSmallBang;
+    private Button mButton;
+
 
 
     @Override
@@ -46,16 +54,9 @@ public class TodosLosSitios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allsites);
 
-
-
-        listView = (ListView) findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
-
-
-
         listView= (ListView)findViewById(R.id.mi_lista);//en el main no hubiera ido el rootView
-
-
         //listView.setEmptyView(findViewById(R.id.lista_vacia));
+
         listaAdaptadorWS = new ListaAdaptadorSitiosWs(this);//en el main hubiera ido this
         listView.setAdapter(listaAdaptadorWS);
 
@@ -77,12 +78,15 @@ public class TodosLosSitios extends AppCompatActivity {
 
 
     }
+    private void toast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
 
 
     /**     *
      * @param sitio
      */
-    private void muestraDialogo(SitioTuristicoWs sitio) {
+    private void muestraDialogo(final SitioTuristicoWs sitio) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //
@@ -113,11 +117,37 @@ public class TodosLosSitios extends AppCompatActivity {
         TextView web = (TextView) mView.findViewById(R.id.txtSitioWebDlg);
         web.setText(sitio.getSitioWeb());
 
+        final SmallBangView like_heart = mView.findViewById(R.id.btnImgLike);
 
         builder.setView(mView);
-
         AlertDialog alert = builder.create();
+
+        like_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (like_heart.isSelected()) {
+                    like_heart.setSelected(false);
+
+                } else {
+                    like_heart.setSelected(true);
+                    like_heart.likeAnimation(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            toast("Like +1");
+                            String externalSitio = sitio.getExternal_id();
+                            System.out.println("EXTERNAL DEL SITIO: "+externalSitio);
+                            System.out.println("EXTERNAL DEL USER desde TodosLosSitios: "+MainActivity.ID_EXTERNAL);
+                            //metodoDarLike()
+                        }
+                    });
+                }
+            }
+        });
+
+
         alert.show();
+
     }
 
 

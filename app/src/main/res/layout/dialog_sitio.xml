@@ -19,6 +19,20 @@
         android:layout_gravity="center"
         android:background="@color/blackDialog"
          />
+    <xyz.hanks.library.bang.SmallBangView
+        android:id="@+id/btnImgLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        >
+        <ImageView
+            android:id="@+id/imageheart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/heart_selector"
+            />
+    </xyz.hanks.library.bang.SmallBangView>
 
     <TextView
         android:id="@+id/txtNombreDlg"
@@ -131,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonCall"
-        android:src="@drawable/ic_place_black_24dp"
+        android:src="@mipmap/ic_camera_alt"
         android:drawablePadding="8dp"
         android:onClick="onClickLlamada"/>
     <TextView
