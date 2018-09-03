@@ -10,11 +10,11 @@ import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
 import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
-<<<<<<< HEAD
+
 import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
-=======
+
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
->>>>>>> developer
+
 
 import java.util.HashMap;
 
@@ -46,17 +46,15 @@ public class Conexion {
 
     }
 
-<<<<<<< HEAD
+
     /**
      *
      * @param context
-     * @param token
-     * @param id
      * @param responseListener
      * @param errorListener
      * @return
      */
-=======
+
     public static VolleyPeticion<ResponseWs> registrarUsuario(
             @NonNull final Context context,
             @NonNull final HashMap mapa,
@@ -99,7 +97,7 @@ public class Conexion {
     }
 
 
->>>>>>> developer
+
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,

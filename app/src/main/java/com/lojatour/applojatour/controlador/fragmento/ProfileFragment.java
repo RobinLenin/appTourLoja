@@ -31,14 +31,13 @@ import java.util.HashMap;
 
 
 public class ProfileFragment extends Fragment {
-<<<<<<< HEAD
-=======
+
     private TextView txtNombre;
     private TextView txtCorreo;
     private TextView txtEdad;
     private ImageView imgPerfil;
     private RequestQueue requestQueue;
->>>>>>> developer
+
 
     @Nullable
     @Override
@@ -67,9 +66,7 @@ public class ProfileFragment extends Fragment {
 
 
     }
-<<<<<<< HEAD
-}
-=======
+
 
     private void oyentes(){
 
@@ -100,4 +97,4 @@ public class ProfileFragment extends Fragment {
 
 
 }
->>>>>>> developer
+
