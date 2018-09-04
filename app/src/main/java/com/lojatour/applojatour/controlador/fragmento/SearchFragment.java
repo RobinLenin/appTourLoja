@@ -81,7 +81,11 @@ public class SearchFragment extends Fragment {
         });
     }
 
-    // este metodo contiene programacion funcional y es llamado al dar click en Buscar
+
+    /**
+     * Método para buscar sitios turisticos mediante su nombre y es llamado al dar click en el botn de buscar
+     * @param titulo
+     */
     private void consultarWS(String titulo){
         //aqui van todos los request
         VolleyPeticion<SitioTuristicoWs[]> sites = Conexion.getSitiosBuscar(

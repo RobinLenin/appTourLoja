@@ -39,6 +39,12 @@ import java.util.HashMap;
 
 import xyz.hanks.library.bang.SmallBangView;
 
+/**
+ * Actividad para presentar y listar en un layout todos
+ * los sitios turisticos almacenados en la bd
+ * @author alexjh
+ * @version 1.0
+ */
 public class TodosLosSitios extends AppCompatActivity {
 
     private ListaAdaptadorSitiosWs listaAdaptadorWS;
@@ -211,7 +217,7 @@ public class TodosLosSitios extends AppCompatActivity {
 
 
     /**
-     * Método para realizar llamadas
+     * Método para realizar llamadas telefónicas
      * @param v
      */
     public void onClickLlamada(View v) {

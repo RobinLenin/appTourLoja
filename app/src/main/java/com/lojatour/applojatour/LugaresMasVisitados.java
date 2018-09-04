@@ -25,6 +25,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
+/**
+ * Actividad para listar en un layout los 3 sitios más viistados
+ * @author alexjh
+ * @version 1.0
+ */
 public class LugaresMasVisitados extends AppCompatActivity {
 
     private ListaAdaptadorVisitaWs listaAdaptadorWS;
@@ -62,7 +67,8 @@ public class LugaresMasVisitados extends AppCompatActivity {
 
     }
 
-    /**     *
+    /**
+     * Método para mostrar un dialog al dar click el cualquier item de la lista
      * @param sitio
      */
     private void muestraDialogo(VisitaWs sitio) {
@@ -92,7 +98,9 @@ public class LugaresMasVisitados extends AppCompatActivity {
         alert.show();
     }
 
-
+    /**
+     * Método que permite listar todos los 3 sitios más visitados
+     */
     private void consultarVisitaWS(){
         //aqui van todos los request
         VolleyPeticion<VisitaWs[]> visitas = Conexion.getListaSitiosMasVisitados(

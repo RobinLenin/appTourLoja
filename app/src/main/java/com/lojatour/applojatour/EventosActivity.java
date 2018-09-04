@@ -25,6 +25,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
+/**
+ * Actividad para llamar al layout de eventos y
+ * al controlador que permite listar dichos eventos
+ * @author alexjh
+ * @since 1.0
+ */
 public class EventosActivity extends AppCompatActivity {
 
     private ListaAdaptadorEventosWs listaAdaptadorEvWS;
@@ -56,14 +62,17 @@ public class EventosActivity extends AppCompatActivity {
 
                 EventoWs evento = listaAdaptadorEvWS.getItem(position);
 
-               muestraDialogo(evento);
+               //muestraDialogo(evento);
             }
         });
 
 
     }
 
-
+    /**
+     * Método que abre un AlertDialog para presentar todos los eventos
+     * @param sitio
+     */
     private void muestraDialogo(EventoWs sitio) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -89,7 +98,9 @@ public class EventosActivity extends AppCompatActivity {
         alert.show();
     }
 
-
+    /**
+     * Método para obtener todos los eventos y ponerlos en la item_listaevento.xml
+     */
     private void consultarEventoWS(){
         //aqui van todos los request
         VolleyPeticion<EventoWs[]> visitas = Conexion.getListaEventos(
