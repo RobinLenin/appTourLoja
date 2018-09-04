@@ -79,8 +79,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Has dado click cardView2", Toast.LENGTH_SHORT).show();
-                startActivity(intent2);
+                 startActivity(intent2);
             }
         });
         cardView3.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +98,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         });
 
         String path = "android.resource://" + getActivity().getPackageName()
-                + "/" + R.raw.videotwo;
+                + "/" + R.raw.lojahigh;
         Log.i("pathVideo: ",path);
         videoView.setVideoURI(Uri.parse(path));
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="20dip"
-    android:background="#2E9AFE"
+    android:background="#a1dfef"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -17,34 +17,41 @@
         android:text="@string/nombre_app"
         android:textColor="@color/com_facebook_blue"
         android:textSize="40sp"
+        android:textStyle="bold"
+        android:paddingTop="40dp"
         android:paddingBottom="30dp"/>
 
     <EditText
         android:id="@+id/txtUsuario"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="@string/usuario"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@color/colorNavIcon"/>
 
     <EditText
         android:id="@+id/txtClave"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_width="match_parent"
         android:hint="@string/clave"
         android:inputType="textPassword"
         android:layout_marginTop="15dip"
-        android:layout_marginBottom="30dip" />
+        android:layout_marginBottom="30dip"
+        android:background="@color/colorNavIcon"
+       />
 
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:text="@string/btn_login"
         android:textColor="#FFFFFF"
         android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
         android:paddingLeft="15dip"
-        android:paddingRight="15dip" />
+        android:paddingRight="15dip"
+        android:background="@color/pinkDialog"/>
 
     <TextView
         android:id="@+id/txt_o"
@@ -54,16 +61,19 @@
         android:layout_gravity="center_horizontal"
         android:text="ó"
         android:textColor="#FFFFFF"
-        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
         android:paddingBottom="20dp"></TextView>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_buttonFacebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:textSize="20dp"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -82,7 +92,8 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/txt_registrar"
         android:textColor="#FFFFFF"
-        android:textSize="12sp"
+        android:textSize="21sp"
+        android:textStyle="bold"
         android:paddingTop="30dp"></TextView>
 
 </LinearLayout>

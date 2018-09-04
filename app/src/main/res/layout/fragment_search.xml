@@ -32,7 +32,7 @@
         android:layout_below="@+id/btn_buscar"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
-        android:background="@color/greenlow">
+        android:background="@color/greenlowlow">
 
     </ListView>
 

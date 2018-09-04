@@ -57,7 +57,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/LoginTheme"/>
         <activity android:name=".SitiosMasVisitados" />
         <activity android:name=".TodosLosSitios" />
         <activity android:name=".LugaresMasVisitados" />
