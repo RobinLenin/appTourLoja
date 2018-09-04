@@ -7,14 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class SitiosMasVisitados extends AppCompatActivity {
-    public Button btnMapa;
+    //public Button btnMapa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba);
 
-        btnMapa = (Button)findViewById(R.id.btnMapa);
-        btnMapa.setOnClickListener(new View.OnClickListener() {
+        // btnMapa = (Button)findViewById(R.id.btnMapa);
+        // btnMapa.setOnClickListener(new View.OnClickListener() {
+        /*
             @Override
             public void onClick(View v) {
                 irMapa();
@@ -28,5 +29,6 @@ public class SitiosMasVisitados extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+*/
+    }
 }

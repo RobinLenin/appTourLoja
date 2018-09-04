@@ -18,6 +18,7 @@ import android.widget.VideoView;
 import com.lojatour.applojatour.EventosActivity;
 import com.lojatour.applojatour.LugaresMasVisitados;
 import com.lojatour.applojatour.MainActivity;
+import com.lojatour.applojatour.MapsActivity;
 import com.lojatour.applojatour.R;
 import com.lojatour.applojatour.SitiosMasVisitados;
 import com.lojatour.applojatour.TodosLosSitios;
@@ -63,7 +64,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         videoView = (VideoView) rootView.findViewById(R.id.video);
 
         intent1 = new Intent(getActivity(),LugaresMasVisitados.class);
-        intent2 = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent2 = new Intent(getActivity(),MapsActivity.class);
         intent3 = new Intent(getActivity(),EventosActivity.class);//
         intent4 = new Intent(getActivity(),TodosLosSitios.class);
 

@@ -205,7 +205,7 @@ public class TodosLosSitios extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Has presionado el boton Ir A",
                 Toast.LENGTH_SHORT).show();
         //
-        intent = new Intent(getApplicationContext(),SitiosMasVisitados.class);
+        intent = new Intent(getApplicationContext(),MapsActivity.class);
         startActivity(intent);
     }
 
