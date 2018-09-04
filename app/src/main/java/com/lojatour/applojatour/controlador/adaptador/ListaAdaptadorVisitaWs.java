@@ -65,12 +65,12 @@ public class ListaAdaptadorVisitaWs extends ArrayAdapter<VisitaWs> {
 
         if (dataset.isEmpty()){
             item = inflater.inflate(R.layout.lista_vaciatop, null);
-            Log.i("msg","entro al if del getView en ListaAdaptadorVisita");
+
         }
         else
         {
             item = inflater.inflate(R.layout.item_listatop, null);
-            Log.i("msg","entro al else del getView en ListaAdaptadorVisita");
+            //Log.i("msg","entro al else del getView en ListaAdaptadorVisita");
         }
 
        /* new DownloadImageTask((ImageView)item.findViewById(R.id.imgFilm))

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.lojatour.applojatour.EventosActivity;
 import com.lojatour.applojatour.LugaresMasVisitados;
 import com.lojatour.applojatour.MainActivity;
 import com.lojatour.applojatour.R;
@@ -63,7 +64,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
 
         intent1 = new Intent(getActivity(),LugaresMasVisitados.class);
         intent2 = new Intent(getActivity(),SitiosMasVisitados.class);
-        intent3 = new Intent(getActivity(),SitiosMasVisitados.class);
+        intent3 = new Intent(getActivity(),EventosActivity.class);//
         intent4 = new Intent(getActivity(),TodosLosSitios.class);
 
         cardView1.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +84,8 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "has dado click card3", Toast.LENGTH_SHORT).show();
-                //startActivity(intent3);
+                Toast.makeText(getActivity(), "EVENTOS", Toast.LENGTH_SHORT).show();
+                startActivity(intent3);
             }
         });
         cardView4.setOnClickListener(new View.OnClickListener() {

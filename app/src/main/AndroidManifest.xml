@@ -61,6 +61,7 @@
         <activity android:name=".SitiosMasVisitados" />
         <activity android:name=".TodosLosSitios" />
         <activity android:name=".LugaresMasVisitados" />
+        <activity android:name=".EventosActivity" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

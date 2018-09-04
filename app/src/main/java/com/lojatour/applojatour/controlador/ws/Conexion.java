@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.lojatour.applojatour.controlador.ws.modelo.EventoWs;
 import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
 import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
@@ -260,6 +261,26 @@ public class Conexion {
         request.setResponseClass(VisitaWs.class);
         return request;
 
+    }
+
+    public static VolleyPeticion<EventoWs[]> getListaEventos(
+            @NonNull final Context context,
+            @NonNull Response.Listener<EventoWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    )
+    {
+
+        final String url = API_URL + "evento/listar";
+
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(EventoWs[].class);
+
+        return peticion;
     }
 
 
