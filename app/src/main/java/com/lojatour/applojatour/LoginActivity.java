@@ -150,7 +150,6 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(UsuarioLoginJson response) {
                                 MainActivity.TOKEN = response.token;
                                 MainActivity.ID_EXTERNAL = response.external_id;
-                                System.out.println("EXTERNAL DE USUARIO: "+MainActivity.ID_EXTERNAL);
                                 Toast.makeText(getApplicationContext(), "Bienvenido " + response.nombre,
                                         Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);

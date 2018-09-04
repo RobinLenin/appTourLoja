@@ -216,6 +216,47 @@ public class Conexion {
         return peticion;
     }
 
+    public static VolleyPeticion<VisitaWs[]> getListaFavoritos(
+            @NonNull final Context context,
+            @NonNull String external_id,
+            @NonNull Response.Listener<VisitaWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "visita/listarFavoritos/"+external_id;
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(VisitaWs[].class);
+
+        return request;
+
+    }
+    public static VolleyPeticion<VisitaWs[]> getListaLikes(
+            @NonNull final Context context,
+            @NonNull String external_id,
+            @NonNull Response.Listener<VisitaWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "visita/listarLikes/"+external_id;
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(VisitaWs[].class);
+
+        return request;
+
+    }
+
     public static VolleyPeticion<SitioTuristicoWs[]> getSitiosBuscar(
             @NonNull final Context context,
             @NonNull String titulo,

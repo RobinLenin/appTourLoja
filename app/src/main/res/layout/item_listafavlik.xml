@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+      >
+
+    <ImageView
+        android:id="@+id/imgFilm"
+        android:layout_width="75dip"
+        android:layout_height="75dip"
+        android:src="@mipmap/ic_camera_alt"
+        />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imgFilm"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:text="TextView"
+        android:paddingLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/tvContadorTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgFilm"
+        android:layout_below="@+id/tvNombre"
+        android:textColor="#343434"
+        android:textSize="13dip"
+        android:layout_marginTop="3dip"
+        android:text="Fecha Visita: "
+        android:textStyle="bold"
+        android:paddingLeft="3dp"/>
+
+    <TextView
+        android:id="@+id/tvFechaVisita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvContadorTitulo"
+        android:layout_below="@+id/tvNombre"
+        android:textColor="#343434"
+        android:textSize="13dip"
+        android:layout_marginTop="3dip"
+        android:text="TextView"
+        />
+
+
+
+
+
+
+</RelativeLayout>
+
+
