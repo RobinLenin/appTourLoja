@@ -118,6 +118,26 @@ public class Conexion {
         return peticion;
     }
 
+    public static VolleyPeticion<UsuarioWs[]> listarUsuarios(
+            @NonNull final Context context,
+            @NonNull Response.Listener<UsuarioWs[]> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    )
+    {
+
+        final String url = API_URL + "usuario/listar";
+
+        VolleyPeticion peticion = new VolleyPeticion(context,
+                Request.Method.GET,
+                url,
+                responseListener,
+                errorListener);
+
+        peticion.setResponseClass(UsuarioWs[].class);
+
+        return peticion;
+    }
+
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,
