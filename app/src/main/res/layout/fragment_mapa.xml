@@ -3,12 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imgInfo"
+        android:layout_width="match_parent"
+        android:layout_height="290dip"
+        android:src="@drawable/puertaciudad"
+        android:background="@color/blackDialog"
+        />
+    <TextView
+        android:id="@+id/txtInfoTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgInfo"
+        android:textSize="20sp"
+        android:text="MAS INFORMACION TURISTICA EN: "/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Mapa"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:layout_below="@+id/txtInfoTitulo"
+        android:paddingLeft="20dp"
+        android:autoLink="web"
+        android:textSize="20sp"
+        android:text="http://www.loja.gob.ec/contenido/servicios-turisticos"/>
+
 
 </RelativeLayout>

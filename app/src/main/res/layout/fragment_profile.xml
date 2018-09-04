@@ -152,7 +152,7 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_phone_android_black_24dp"/>
+                android:src="@drawable/ic_forum_black_24dp"/>
             <TextView
                 android:id="@+id/txtEdad"
                 android:textStyle="bold"

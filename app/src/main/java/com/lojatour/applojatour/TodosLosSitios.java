@@ -49,9 +49,9 @@ public class TodosLosSitios extends AppCompatActivity {
     public static double lngST = 0.0;
 
     private SmallBangView mSmallBang;
-    private Button mButton;
     private String externalSite;
     private String externalUser;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,12 +82,18 @@ public class TodosLosSitios extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Función para cambiar el texto que presenta un toast
+     * @param text
+     */
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
 
-    /**     *
+    /**
+     * Método para lanzar un AlertDialog la presionar un item de la lista
      * @param sitio
      */
     private void muestraDialogo(final SitioTuristicoWs sitio) {
@@ -160,6 +166,10 @@ public class TodosLosSitios extends AppCompatActivity {
         alert.show();
 
     }
+
+    /**
+     * Método para dar like o dislike según sea el caso a un sitio turístico
+     */
     private void likeOrDislike(){
         HashMap<String, String> mapa = new HashMap<>();
         mapa.put("external", externalUser);
@@ -186,10 +196,25 @@ public class TodosLosSitios extends AppCompatActivity {
         requestQueue.add(liker);
     }
 
+    /**
+     * Método que es llamado desde el boton btnIrRuta que está en el layout
+     * dialog_sitio
+     * @param v
+     */
+    public void onClickIrRuta(View v){
+        Toast.makeText(getApplicationContext(), "Has presionado el boton Ir A",
+                Toast.LENGTH_SHORT).show();
+        //
+        intent = new Intent(getApplicationContext(),SitiosMasVisitados.class);
+        startActivity(intent);
+    }
 
 
+    /**
+     * Método para realizar llamadas
+     * @param v
+     */
     public void onClickLlamada(View v) {
-
         phone= "tel:"+phone;
         System.out.println("ENTRO EN ONcLICKlLAMADA" + phone);
         Intent i = new Intent(android.content.Intent.ACTION_CALL, Uri.parse(phone));

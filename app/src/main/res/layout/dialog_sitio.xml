@@ -42,17 +42,18 @@
         android:textStyle="bold"
         android:paddingLeft="2dp"/>
     <Button
+        android:id="@+id/btnIrRuta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_map_black_24dp"
         android:drawablePadding="8dp"
-        android:id="@+id/btnIrRuta"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/pinkDialog"
         android:text="Ir"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_toRightOf="@+id/imgFilmDlg"/>
+        android:layout_toRightOf="@+id/imgFilmDlg"
+        android:onClick="onClickIrRuta"/>
 
     <TextView
         android:id="@+id/txtDescripcionB"
@@ -145,7 +146,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonCall"
-        android:src="@mipmap/ic_camera_alt"
+        android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+        android:text="Llamar"
         android:drawablePadding="8dp"
         android:onClick="onClickLlamada"/>
     <TextView
