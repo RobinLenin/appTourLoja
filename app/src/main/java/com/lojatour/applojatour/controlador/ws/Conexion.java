@@ -138,6 +138,29 @@ public class Conexion {
         return peticion;
     }
 
+    public static VolleyPeticion<UsuarioLoginJson> obtenerTokenExternal(
+            @NonNull final Context context,
+            @NonNull final HashMap mapa,
+            @NonNull Response.Listener<UsuarioLoginJson> responseListener,
+            @NonNull Response.ErrorListener errorListener
+    ){
+        final String url = API_URL + "usuario/loginCorreo";
+        VolleyPeticion request = new VolleyPeticion(
+                context,
+                Request.Method.POST,
+                url,
+                mapa,
+                HashMap.class,
+                String.class,
+                responseListener,
+                errorListener
+        );
+
+        request.setResponseClass(UsuarioLoginJson.class);
+        return request;
+
+    }
+
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,

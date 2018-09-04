@@ -100,27 +100,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     @Override
                     public void onResponse(UsuarioWs[] response) {
                         if(verificarUsuario(Arrays.asList(response))==false){
-                            /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             UsuarioWs usuario = new UsuarioWs();
-                            String clave = generarClave();
                             usuario.setNombre(user.getDisplayName());
-                            usuario.setClave(clave);
+                            usuario.setClave("usuario");
                             usuario.setCorreo(user.getEmail());
                             usuario.setEdad("18");
                             usuario.setGenero("1");
-                            registrarUsuarioFacebook(usuario);*/
-                            Toast toast1 = Toast.makeText(getApplicationContext(), "Se ha registrado usuario con Facebook",
-                                    Toast.LENGTH_SHORT);
-                            toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
-                            toast1.show();
+                            registrarUsuarioFacebook(usuario);
                         }
-                        else{
-                            //login("sddasd", "sada");
-                            Toast toast1 = Toast.makeText(getApplicationContext(), "Se inicio sesion con Facebook",
-                                    Toast.LENGTH_SHORT);
-                            toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
-                            toast1.show();
-                        }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -147,34 +136,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         for(UsuarioWs str : data)
         {
             if(str.getCorreo().equalsIgnoreCase(user.getEmail())){
+                loginCorreoFacebook(str.getCorreo());
                 existe = true;
+
             }
         }
         return existe;
-    }
-
-    private String generarClave() {
-        String matricula = "";
-        int a;
-        for (int i = 0; i < 7; i++) {
-            if (i < 4) {    // 0,1,2,3 posiciones de numeros
-                matricula = (int) (Math.random() * 9) + "" + matricula;
-
-            } else {       // 4,5,6 posiciones de letras
-                do {
-                    a = (int) (Math.random() * 26 + 65);///
-                } while (a == 65 || a == 69 || a == 73 || a == 79 || a == 85);
-
-                char letra = (char) a;
-                if (i == 4) {
-                    matricula = matricula + "-" + letra;
-                } else {
-                    matricula = matricula + "" + letra;
-                }
-
-            }
-        }
-        return matricula;
     }
 
     private void registrarUsuarioFacebook(final UsuarioWs usuario){
@@ -192,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     @Override
                     public void onResponse(ResponseWs response) {
                         String mensaje = response.mensaje;
-                        if(mensaje.equalsIgnoreCase("Operacion Exitosa")){
+                        if(mensaje.equalsIgnoreCase("Operacion existosa al registrar el Usuario")){
                             login(usuario.getNombre(), usuario.getClave());
                             crearDialogo(usuario.getClave());
                         }
@@ -258,6 +225,34 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         );
         requestQueue.add(inicio);
     }
+
+    private void loginCorreoFacebook(String correo) {
+        HashMap<String, String> mapa = new HashMap<>();
+        mapa.put("correo", correo);
+        VolleyPeticion<UsuarioLoginJson> inicio = Conexion.obtenerTokenExternal(
+                getApplicationContext(),
+                mapa,
+                new Response.Listener<UsuarioLoginJson>() {
+                    @Override
+                    public void onResponse(UsuarioLoginJson response) {
+                        MainActivity.TOKEN = response.token;
+                        MainActivity.ID_EXTERNAL = response.external_id;
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
+                        Toast.makeText(getApplicationContext(), errores.errorMessage,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(inicio);
+    }
+
     private void irLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
