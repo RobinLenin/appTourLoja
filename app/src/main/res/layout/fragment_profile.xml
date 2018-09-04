@@ -47,6 +47,7 @@
                 android:orientation="horizontal"
                 android:weightSum="3">
                 <LinearLayout
+                    android:id="@+id/txtLikes"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:layout_width="0dp"
@@ -69,6 +70,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/txtFavoritos"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:layout_width="0dp"

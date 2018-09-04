@@ -1,6 +1,7 @@
 package com.lojatour.applojatour.controlador.fragmento;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.lojatour.applojatour.LoginActivity;
 import com.lojatour.applojatour.MainActivity;
 import com.lojatour.applojatour.R;
+import com.lojatour.applojatour.SitiosFavoritosActivity;
+import com.lojatour.applojatour.SitiosLikesActivity;
 import com.lojatour.applojatour.controlador.ws.Conexion;
 import com.lojatour.applojatour.controlador.ws.VolleyPeticion;
 import com.lojatour.applojatour.controlador.ws.VolleyProcesadorResultado;
@@ -44,6 +49,10 @@ public class ProfileFragment extends Fragment {
     private RequestQueue requestQueue;
     private Button btnEditarPerfil;
 
+    private LinearLayout txtLikes;
+    private LinearLayout txtFavoritos;
+
+
 
     @Nullable
     @Override
@@ -54,10 +63,25 @@ public class ProfileFragment extends Fragment {
         txtEdad = (TextView)view.findViewById(R.id.txtEdad);
         btnEditarPerfil = (Button) view.findViewById(R.id.btnEditarPerfil);
 
+        txtLikes = (LinearLayout) view.findViewById(R.id.txtLikes);
+        txtFavoritos = (LinearLayout) view.findViewById(R.id.txtFavoritos);
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 muestraDialogoModificar();
+            }
+        });
+
+        txtLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irSitiosLikes();
+            }
+        });
+        txtFavoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irSitiosFavoritos();
             }
         });
 
@@ -76,13 +100,22 @@ public class ProfileFragment extends Fragment {
         else{
             oyentes();
         }
-
-
-
         return view;
 
-
     }
+
+    private void irSitiosLikes() {
+        Intent intent = new Intent(getContext(), SitiosLikesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void irSitiosFavoritos() {
+        Intent intent = new Intent(getContext(), SitiosFavoritosActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     private void muestraDialogoModificar() {
         requestQueue = Volley.newRequestQueue(getContext());
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

@@ -66,6 +66,7 @@ si es SearchFragment debería tener R.layout.fragment_search*/
         intent3 = new Intent(getActivity(),SitiosMasVisitados.class);
         intent4 = new Intent(getActivity(),TodosLosSitios.class);
 
+
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

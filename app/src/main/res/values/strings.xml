@@ -53,5 +53,7 @@
     <string name="txt_busqueda_vacio">Input Vacio Please ingrese un valor</string>
 
     <string name="itemEditPerfil">EditarPerfil</string>
+    <string name="title_activity_sitios_favoritos">Sitios Turisticos Favoritos</string>
+    <string name="title_activity_sitios_likes">Likes</string>
 
 </resources>
