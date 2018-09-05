@@ -91,7 +91,7 @@
         android:layout_alignParentTop="false"
         android:layout_gravity="center_horizontal"
         android:text="@string/txt_registrar"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/pinkDialog"
         android:textSize="21sp"
         android:textStyle="bold"
         android:paddingTop="30dp"></TextView>
