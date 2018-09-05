@@ -193,9 +193,9 @@ public class TodosLosSitios extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
+                        /*VolleyTiposError errores = VolleyProcesadorResultado.parseErrorResponse(error);
                         Toast.makeText(getApplicationContext(), errores.errorMessage,
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_SHORT).show();*/
                     }
                 }
         );

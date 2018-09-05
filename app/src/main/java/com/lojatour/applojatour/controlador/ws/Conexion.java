@@ -20,11 +20,14 @@ import java.util.HashMap;
  */
 public class Conexion {
 
+    /**
+     * Variable estática que contiene la url del servicio web
+     */
     private final static String API_URL = "http://tuor.000webhostapp.com/tour/public/index.php/";
 
     /**
-     * Método para iniciar sesion
-     * @param context
+     * Método estatico para conectar con el end-point iniciarSesion del
+     * servicio web
      * @param mapa
      * @param responseListener
      * @param errorListener
@@ -55,7 +58,8 @@ public class Conexion {
 
 
     /**
-     *
+     * Método estatico para conectar con el end-point registrarUsuario del
+     * servicio web
      * @param context
      * @param responseListener
      * @param errorListener
@@ -85,6 +89,16 @@ public class Conexion {
 
 
     }
+
+    /**
+     * Método estatico para conectar con el end-point usuarioBuscar del
+     * servicio web
+     * @param context
+     * @param external_id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<UsuarioWs> getUsuario(
             @NonNull final Context context,
             @NonNull String external_id,
@@ -103,6 +117,16 @@ public class Conexion {
         return peticion;
     }
 
+    /**
+     * Método estatico para conectar con el end-point usuarioModificar del
+     * servicio web
+     * @param context
+     * @param external_id
+     * @param mapa
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<ResponseWs> modificarUsuario(
             @NonNull final Context context,
             @NonNull String external_id,
@@ -125,6 +149,14 @@ public class Conexion {
         return peticion;
     }
 
+    /**
+     * Método estatico para conectar con el end-point listarUsuarios del
+     * servicio web
+     * @param context
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<UsuarioWs[]> listarUsuarios(
             @NonNull final Context context,
             @NonNull Response.Listener<UsuarioWs[]> responseListener,
@@ -145,6 +177,15 @@ public class Conexion {
         return peticion;
     }
 
+    /**
+     * Método estatico para conectar con el end-point usuarioLoginCorreo del
+     * servicio web con el fin de obtener el token y externak_id del usuario
+     * @param context
+     * @param mapa
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<UsuarioLoginJson> obtenerTokenExternal(
             @NonNull final Context context,
             @NonNull final HashMap mapa,
@@ -168,6 +209,16 @@ public class Conexion {
 
     }
 
+    /**
+     * Método estatico para conectar con el end-point listarTodosLosSitios del
+     * servicio web
+     * @param context
+     * @param token
+     * @param id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<SitioTuristicoWs[]>listarSitiosAll(
             @NonNull final Context context,
             @NonNull final String token,
@@ -198,6 +249,14 @@ public class Conexion {
         return request;
     }
 
+    /**
+     * Método estatico para conectar con el end-point listarAllSites del
+     * servicio web
+     * @param context
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<SitioTuristicoWs[]> getListaSitios(
             @NonNull final Context context,
             @NonNull Response.Listener<SitioTuristicoWs[]> responseListener,
@@ -219,7 +278,8 @@ public class Conexion {
     }
 
     /**
-     *
+     *  Método estatico para conectar con el end-point buscar imagenes del
+     * servicio web
      * @param sitio_id
      * @param responseListener
      * @param errorListener
@@ -246,6 +306,14 @@ public class Conexion {
 
     }
 
+    /**
+     * Método estatico para conectar con el end-point sitioMasVisitados del
+     * servicio web
+     * @param context
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<VisitaWs[]> getListaSitiosMasVisitados(
             @NonNull final Context context,
             @NonNull Response.Listener<VisitaWs[]> responseListener,
@@ -266,6 +334,15 @@ public class Conexion {
         return peticion;
     }
 
+    /**
+     * Método estatico para conectar con el end-point listarSitiosFavoritos del
+     * servicio web
+     * @param context
+     * @param external_id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<VisitaWs[]> getListaFavoritos(
             @NonNull final Context context,
             @NonNull String external_id,
@@ -286,6 +363,15 @@ public class Conexion {
         return request;
 
     }
+
+    /**
+     *
+     * @param context
+     * @param external_id
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<VisitaWs[]> getListaLikes(
             @NonNull final Context context,
             @NonNull String external_id,
@@ -307,6 +393,14 @@ public class Conexion {
 
     }
 
+    /**
+     *
+     * @param context
+     * @param titulo
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<SitioTuristicoWs[]> getSitiosBuscar(
             @NonNull final Context context,
             @NonNull String titulo,
@@ -331,6 +425,14 @@ public class Conexion {
 
     }
 
+    /**
+     *
+     * @param context
+     * @param mapa
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<VisitaWs> setLikeOrVisita(
             @NonNull final Context context,
             @NonNull final HashMap mapa,
@@ -354,6 +456,14 @@ public class Conexion {
 
     }
 
+    /**
+     * Método estatico para conectar con el end-point listarEventos del
+     * servicio web
+     * @param context
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<EventoWs[]> getListaEventos(
             @NonNull final Context context,
             @NonNull Response.Listener<EventoWs[]> responseListener,
