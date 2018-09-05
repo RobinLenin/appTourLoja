@@ -28,7 +28,7 @@ import java.util.Arrays;
 /**
  * Actividad para listar en un layout los 3 sitios más viistados
  * @author alexjh
- * @version 1.00
+ * @version 1.0
  */
 public class LugaresMasVisitados extends AppCompatActivity {
 

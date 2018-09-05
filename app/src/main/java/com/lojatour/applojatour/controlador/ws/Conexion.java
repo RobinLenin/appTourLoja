@@ -3,7 +3,6 @@ package com.lojatour.applojatour.controlador.ws;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.lojatour.applojatour.controlador.ws.modelo.EventoWs;
@@ -11,12 +10,8 @@ import com.lojatour.applojatour.controlador.ws.modelo.ImagenWs;
 import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
-
 import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
-
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
-
-
 import java.util.HashMap;
 
 public class Conexion {
