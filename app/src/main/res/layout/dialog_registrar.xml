@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#a1dfef"
     android:orientation="vertical"
     android:padding="6dp">
 
@@ -17,9 +17,10 @@
 
     <EditText
         android:id="@+id/edit_Usuario"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:inputType="text"/>
+        android:layout_height="48dp"
+        android:inputType="text"
+        android:background="@color/colorNavIcon"/>
 
 
     <TextView
@@ -31,9 +32,10 @@
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/edit_Clave"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:inputType="textPassword"/>
+        android:layout_height="48dp"
+        android:inputType="textPassword"
+        android:background="@color/colorNavIcon"/>/>
 
     <TextView
         android:id="@+id/txtRCLaveDlg"
@@ -45,9 +47,10 @@
 
     <EditText
         android:id="@+id/edit_RClave"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:inputType="textPassword"/>
+        android:layout_height="48dp"
+        android:inputType="textPassword"
+        android:background="@color/colorNavIcon"/>>
 
     <TextView
         android:id="@+id/txtEmailDlg"
@@ -60,8 +63,9 @@
     <EditText
         android:id="@+id/edit_Email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"/>
+        android:layout_height="48dp"
+        android:inputType="textEmailAddress"
+        android:background="@color/colorNavIcon"/>
 
     <TextView
         android:id="@+id/txtEdadDlg"
@@ -74,8 +78,9 @@
     <EditText
         android:id="@+id/edit_Edad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_height="48dp"
+        android:inputType="number"
+        android:background="@color/colorNavIcon"/>
 
     <LinearLayout
         android:id="@+id/botonera"
@@ -87,21 +92,29 @@
 
         <Button
             android:id="@+id/dialogButtonCancelar"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:text="@string/btn_cancelar"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-
-            />
+            android:background="@color/pinkDialog"/>
 
         <Button
             android:id="@+id/dialogButtonRegistrar"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:text="@string/btn_registrar"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
+            android:background="@color/pinkDialog"/>
 
             />
 
