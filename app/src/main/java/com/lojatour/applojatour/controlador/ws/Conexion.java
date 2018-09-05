@@ -14,10 +14,22 @@ import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
 import java.util.HashMap;
 
+/**
+ * Clase para conectar nuestra aplicacion con el servicio web
+ * mediante una url
+ */
 public class Conexion {
 
     private final static String API_URL = "http://tuor.000webhostapp.com/tour/public/index.php/";
 
+    /**
+     * Método para iniciar sesion
+     * @param context
+     * @param mapa
+     * @param responseListener
+     * @param errorListener
+     * @return
+     */
     public static VolleyPeticion<UsuarioLoginJson> iniciarSesion(
             @NonNull final Context context,
             @NonNull final HashMap mapa,

@@ -47,7 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Actividad principar de la aplicación
+ * Actividad principal de la aplicación
  * @author robin
  * @version 1.0
  */

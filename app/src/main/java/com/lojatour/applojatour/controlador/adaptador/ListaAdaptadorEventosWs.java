@@ -29,7 +29,9 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- *
+ * Clase adaptador para permitir listar los diferentes eventos
+ * en el layout item_listaevento
+ * @author alexjh
  */
 public class ListaAdaptadorEventosWs extends ArrayAdapter<EventoWs> {
 

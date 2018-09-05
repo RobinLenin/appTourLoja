@@ -23,7 +23,11 @@ import com.squareup.picasso.Picasso;
 
 import com.lojatour.applojatour.controlador.ws.modelo.SitioTuristicoWs;
 
-
+/**
+ * Clase adaptador para permitir listar los diferentes sitios turisticos
+ * en el layout item_lista
+ * @author alexjh
+ */
 public class ListaAdaptadorSitiosWs extends ArrayAdapter<SitioTuristicoWs> {
 
     private List<SitioTuristicoWs> dataset;

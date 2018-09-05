@@ -47,7 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Actividad que eprmitira el control del login
+ * Actividad que permitira el control del login
  * @author robin
  * @version 1.0
  */

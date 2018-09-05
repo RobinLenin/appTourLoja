@@ -25,7 +25,11 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Clase adaptador para permitir listar las visitas
+ * en el layout item_listatop
+ * @author alexjh
+ */
 public class ListaAdaptadorVisitaWs extends ArrayAdapter<VisitaWs> {
 
     private List<VisitaWs> dataset;
