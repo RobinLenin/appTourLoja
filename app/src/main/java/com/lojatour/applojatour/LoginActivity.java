@@ -1,7 +1,9 @@
 package com.lojatour.applojatour;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -149,8 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                         new Response.Listener<UsuarioLoginJson>() {
                             @Override
                             public void onResponse(UsuarioLoginJson response) {
-                                MainActivity.TOKEN = response.token;
-                                MainActivity.ID_EXTERNAL = response.external_id;
+                                guardarCredenciales(response.token, response.external_id);
                                 Toast.makeText(getApplicationContext(), "Bienvenido " + response.nombre,
                                         Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
@@ -172,7 +173,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void guardarCredenciales(String token, String idExternal){
+        SharedPreferences sharedPreferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =  sharedPreferences.edit();
+        editor.putString("token", token);
+        editor.putString("idExternal", idExternal);
+        editor.commit();
+    }
     private void muestraDialogo() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

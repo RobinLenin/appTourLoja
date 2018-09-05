@@ -60,9 +60,9 @@
                         android:textSize="20sp"
                         />
                     <TextView
+                        android:id="@+id/txtNLikes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="125"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
@@ -83,9 +83,9 @@
                         android:textSize="20sp"
                         />
                     <TextView
+                        android:id="@+id/txtNFavoritos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1205"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"

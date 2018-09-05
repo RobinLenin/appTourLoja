@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import com.lojatour.applojatour.controlador.ws.VolleyTiposError;
 import com.lojatour.applojatour.controlador.ws.modelo.ResponseWs;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioLoginJson;
 import com.lojatour.applojatour.controlador.ws.modelo.UsuarioWs;
+import com.lojatour.applojatour.controlador.ws.modelo.VisitaWs;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -52,6 +54,9 @@ public class ProfileFragment extends Fragment {
     private LinearLayout txtLikes;
     private LinearLayout txtFavoritos;
 
+    private TextView txtNLikes;
+    private TextView txtNFavoritos;
+
 
 
     @Nullable
@@ -62,6 +67,9 @@ public class ProfileFragment extends Fragment {
         txtCorreo = (TextView)view.findViewById(R.id.txtEmail);
         txtEdad = (TextView)view.findViewById(R.id.txtEdad);
         btnEditarPerfil = (Button) view.findViewById(R.id.btnEditarPerfil);
+
+        txtNLikes = (TextView)view.findViewById(R.id.txtNLikes);
+        txtNFavoritos = (TextView)view.findViewById(R.id.txtNFavoritos);
 
         txtLikes = (LinearLayout) view.findViewById(R.id.txtLikes);
         txtFavoritos = (LinearLayout) view.findViewById(R.id.txtFavoritos);
@@ -89,17 +97,11 @@ public class ProfileFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null){
             imgPerfil = (ImageView) view.findViewById(R.id.imgPerfil);
-            String nombre = user.getDisplayName();
-            String email = user.getEmail();
-            String uid = user.getUid();
             Picasso.get().load(user.getPhotoUrl()).resize(50, 45).centerCrop().into(imgPerfil);
+        }
 
-            txtNombre.setText(nombre);
-            txtCorreo.setText(email);
-        }
-        else{
-            oyentes();
-        }
+        oyentes();
+
         return view;
 
     }
@@ -204,7 +206,62 @@ public class ProfileFragment extends Fragment {
         requestQueue.add(buscar);
     }
 
+    private void consultarLikes(){
+        VolleyPeticion<VisitaWs[]> likes = Conexion.getListaLikes(
+                getContext(),
+                MainActivity.ID_EXTERNAL,
+                new Response.Listener<VisitaWs[]>() {
+                    @Override
+                    public void onResponse(VisitaWs[] response) {
+                        int lik = response.length;
+                        txtNLikes.setText( Integer.toString(lik));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast toast1 = Toast.makeText(getContext(),
+                                getContext().getString(R.string.msg_no_busqueda),
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
+                        toast1.show();
 
+
+                    }
+                }
+        );
+
+        requestQueue.add(likes);
+
+    }
+    private void consultarFavoritos(){
+        VolleyPeticion<VisitaWs[]> favoritos = Conexion.getListaFavoritos(
+                getContext(),
+                MainActivity.ID_EXTERNAL,
+                new Response.Listener<VisitaWs[]>() {
+                    @Override
+                    public void onResponse(VisitaWs[] response) {
+                        int fav = response.length;
+                        txtNFavoritos.setText( Integer.toString(fav));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast toast1 = Toast.makeText(getContext(),
+                                getContext().getString(R.string.msg_no_busqueda),
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
+                        toast1.show();
+
+
+                    }
+                }
+        );
+
+        requestQueue.add(favoritos);
+
+    }
 
     private void modificarUsuario(UsuarioWs usuario, final Dialog dialog) {
         HashMap<String, String> mapa = new HashMap<>();
@@ -246,6 +303,8 @@ public class ProfileFragment extends Fragment {
                                 txtNombre.setText(response.nombre);
                                 txtCorreo.setText(response.correo);
                                 txtEdad.setText(response.edad);
+                                consultarFavoritos();
+                                consultarLikes();
                             }
                         },
                         new Response.ErrorListener() {
