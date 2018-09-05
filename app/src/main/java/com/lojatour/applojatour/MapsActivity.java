@@ -47,19 +47,61 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Actividad que permitirá la obtención de la ruta entre el dispositivo y un sitio turistico
+ * @author robin
+ * @version 1.0
+ */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
-
+    /**
+     * Variable utilizada para crear una instancia de googleMap
+     */
     private GoogleMap mMap;
+    /**
+     * Variable utilizada para establecer una solicitud de ubicación
+     */
     private static final int LOCATION_REQUEST = 500;
+    /**
+     * Arreglo de contendra los puntos de origen y destino de tipo LatLng
+     */
     ArrayList<LatLng> listPoints;
+    /**
+     * Variable que almacena el valor de petición de permiso para la localización
+     */
+    private static int PETICION_PERMISO_LOCALIZACION = 101;
+    /**
+     * Variable para luego instanciar un objeto de la clase Marker
+     */
     private Marker marcador;
+    /**
+     * Variable tipo double para almacenar latitud de ubicación del dispositivo
+     */
     double lat = 0.0;
+    /**
+     * Variable tipo double para almacenar la longitud de ubicación del dispositivo
+     */
     double lng = 0.0;
+    /**
+     * Variable tipo double que almacenara el valor de la latitud de ubicación de un sitio seleccionado
+     */
     double latST = TodosLosSitios.latST;
+    /**
+     * Variable tipo double que almacenara el valor de la longuitud de ubicación de un sitio seleccionado
+     */
     double lngST = TodosLosSitios.lngST;
+    /**
+     * Variable tipo String que almacenara un mensaje de información del gps del dispositivo
+     */
     String mensaje1;
+    /**
+     * Variable tipo String que almacenará la dirección de la ubicación del dipositivo
+     */
     String direccion = "";
 
+    /**
+     * Método que ejecutará tareas al iniciar la Actividad
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +115,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-
+    /**
+     * Método que ejecutará tareas cuando se genere el mapa en la actividad
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -82,13 +127,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         crearRuta();
     }
 
+    /**
+     * Método que volverá al MainActivity al pulsar botón regresar
+     */
     @Override
     public void onBackPressed() {
         Intent volver = new Intent(this, MainActivity.class);
         startActivity(volver);
         finish();
     }
-    //activar los servicios del gps cuando esten apagados
+
+    /**
+     * Método que activa los servicios del Gps cuando estén apagados
+     */
     public void locationStart() {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         final boolean gpsEnabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -99,6 +150,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /**
+     * Método que obtendra la dirección de la ubicación del dispositivo
+     * @param loc
+     */
     public void setLocation(Location loc) {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
@@ -117,6 +172,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Método quje agrega el marcador destino en el mapa
+     * @param latST
+     * @param lngST
+     */
     private void AgregarMarcadorSitio(double latST, double lngST) {
         LatLng coordenadas = new LatLng(latST, lngST);
         listPoints.add(coordenadas);
@@ -126,7 +186,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.addMarker(markerOptions);
     }
 
-    //agregar el marcador en el mapa
+    /**
+     * Método que agrega el marcador de origen al mapa
+     * @param lat
+     * @param lng
+     */
     private void AgregarMarcador(double lat, double lng) {
         LatLng coordenadas = new LatLng(lat, lng);
         listPoints.add(coordenadas);
@@ -139,6 +203,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.animateCamera(MiUbicacion);
     }
 
+    /**
+     * Método que genera la ruta entre los marcadores de origen y destino
+     */
     public void crearRuta(){
         if (listPoints.size() == 2) {
             //Create the URL to get request from first marker to second marker
@@ -147,7 +214,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             taskRequestDirections.execute(url);
         }
     }
-    //actualizar la ubicacion
+
+    /**
+     * Método que permite la actualización de la ubicacion del dispositivo
+     * @param location
+     */
     private void ActualizarUbicacion(Location location) {
         if (location != null) {
             lat = location.getLatitude();
@@ -157,7 +228,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    //control del gps
+    /**
+     * Método oyente para el control del gpsp
+     */
     LocationListener locListener = new LocationListener() {
 
         @Override
@@ -185,8 +258,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             Mensaje();
         }
     };
-    private static int PETICION_PERMISO_LOCALIZACION = 101;
 
+
+    /**
+     * Método que obtiene la ubicación del dispositivo movil
+     */
     private void miUbicacion() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -203,11 +279,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /**
+     * Método que genera un Toast para presentar la variable mensaje
+     */
     public void Mensaje() {
         Toast toast = Toast.makeText(this, mensaje1, Toast.LENGTH_LONG);
         //toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
     }
+
+    /**
+     * Método que devuelve un String con la solicitud url
+     * @param origin
+     * @param dest
+     * @return
+     */
     private String getRequestUrl(LatLng origin, LatLng dest) {
         //Value of origin
         String str_org = "origin=" + origin.latitude +","+origin.longitude;
@@ -226,6 +312,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return url;
     }
 
+    /**
+     * Método que envía una solicitud http get a una url
+     * @param reqUrl
+     * @return
+     * @throws IOException
+     */
     private String requestDirection(String reqUrl) throws IOException {
         String responseString = "";
         InputStream inputStream = null;
@@ -261,6 +353,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return responseString;
     }
 
+    /**
+     * Método que controla el resultado de la solicitud de permisos
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -273,6 +371,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Clase interna para la ejecución de instrucciones
+     */
     public class TaskRequestDirections extends AsyncTask<String, Void, String> {
 
         @Override
@@ -294,6 +395,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             taskParser.execute(s);
         }
     }
+
+    /**
+     * Método que convierte los valores obtenidos de la ubicación y
+     */
 
     public class TaskParser extends AsyncTask<String, Void, List<List<HashMap<String, String>>> > {
 

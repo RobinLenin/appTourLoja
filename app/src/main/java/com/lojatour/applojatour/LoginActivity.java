@@ -46,27 +46,40 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Actividad que eprmitira el control del login
+ * @author robin
+ * @version 1.0
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
 
-    //Variables de registro de usuario
+    /**
+     * Variables que almacenarán los datos devueltos en la una petición
+     */
     public String mensaje;
     public String siglas;
-
-    private LoginButton loginButtonFacebook;
+    /**
+     *Variables para instanciar objetos para la autentificación con firebase
+     */
     private CallbackManager callbackManager;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
+    /**
+     * Varibles para almacenar los componentes del layout
+      */
     private ProgressBar progressBar;
-
-    //
+    private LoginButton loginButtonFacebook;
     private EditText correo;
     private EditText clave;
     private Button btn_login;
     private TextView txt_registrar;
-
+    /**
+     * Variable que se utilizará para enviar una solicitud de volley
+     */
     private RequestQueue requestQueue;
 
     @Override
@@ -94,7 +107,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Callback registration
+        /**
+         * Registro de devolución de llamada
+         */
         loginButtonFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -125,6 +140,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método que obtendra los datos escritos en la aplicación, comprobarlos y envialos a una solicitud Volley
+     */
     private void oyentes(){
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +191,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Método utilizado para guardar datos en la memoria del telefono utilizando SharedPreferences
+     * @param token
+     * @param idExternal
+     */
     public void guardarCredenciales(String token, String idExternal){
         SharedPreferences sharedPreferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =  sharedPreferences.edit();
@@ -180,6 +204,10 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("idExternal", idExternal);
         editor.commit();
     }
+
+    /**
+     * Método que muestra un dialogo para registrar usuarios
+     */
     private void muestraDialogo() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -232,6 +260,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método que envia una solicitud al servicio para registrar usuario
+     * @param usuario
+     * @param dialogo
+     */
+
     private void registrarUsuario(final UsuarioWs usuario, final Dialog dialogo){
 
         HashMap<String, String> mapa = new HashMap<>();
@@ -269,7 +303,10 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(registro);
     }
 
-
+    /**
+     * Manejo del token de acceso de Facebook
+     * @param accessToken
+     */
 
     private void handleFacebookAccessToken(AccessToken accessToken) {
         progressBar.setVisibility(View.VISIBLE);
@@ -288,6 +325,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método que lleva al MMain Activity
+     */
     private void irPantallaPrincipal() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

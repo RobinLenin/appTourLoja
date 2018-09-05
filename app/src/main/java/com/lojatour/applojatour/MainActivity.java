@@ -46,9 +46,17 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Actividad principar de la aplicación
+ * @author robin
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
-    private BottomNavigationView bottomNavigationView;
 
+    private BottomNavigationView bottomNavigationView;
+    /**
+     * Varibles estaticas para el control del usuario logueado
+     */
     public static String TOKEN = "";
     public static String ID_EXTERNAL = "";
 
@@ -86,12 +94,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
     }
+
+    /**
+     * Método utilizado para leer datos guardados en la memoria del telefono utilizando SharedPreferences
+     */
     private void cargarPreferencias() {
         SharedPreferences sharedPreferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         TOKEN = sharedPreferences.getString("token", "");
         ID_EXTERNAL = sharedPreferences.getString("idExternal", "");
         System.out.println("LLaves: " + TOKEN);
     }
+
+    /**
+     * Método que realiza una solicitud al servicio para listar los usuarios
+     */
     private void buscarUsuarios(){
         VolleyPeticion<UsuarioWs[]> lista = Conexion.listarUsuarios(
                 getApplicationContext(),
@@ -129,6 +145,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         requestQueue.add(lista);
 
     }
+
+    /**
+     * Método que comprueba si el usuario ya esta registrado con facebook
+     * @param data
+     * @return
+     */
     public boolean verificarUsuario(List<UsuarioWs> data){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         boolean existe = false;
@@ -143,6 +165,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return existe;
     }
 
+    /**
+     * Método para registrar usuario con datos de facebook
+     * @param usuario
+     */
     private void registrarUsuarioFacebook(final UsuarioWs usuario){
 
         HashMap<String, String> mapa = new HashMap<>();
@@ -177,6 +203,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         requestQueue.add(registro);
     }
 
+    /**
+     * Método que genera dialogo que muestra contraseña por defecto del usuario creado con datos de facebook
+     * @param clave
+     */
     private void crearDialogo(String clave) {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
         dialogo.setTitle("Importante");
@@ -190,13 +220,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         dialogo.show();
     }
 
+    /**
+     * Método que muestra un Toast con información
+     */
     public void aceptar() {
         Toast.makeText(getApplicationContext(), "Se ha creado la cuenta con sus datos de Facebook",
                 Toast.LENGTH_SHORT).show();
     }
 
 
-
+    /**
+     * Método que loguea al usuario creado con datos de facebook
+     * @param user
+     * @param password
+     */
     private void login(String user, String password) {
         HashMap<String, String> mapa = new HashMap<>();
         mapa.put("correo", user);
@@ -224,6 +261,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         );
         requestQueue.add(inicio);
     }
+    /**
+     * Método utilizado para guardar datos en la memoria del telefono utilizando SharedPreferences
+     * @param token
+     * @param idExternal
+     */
     public void guardarCredenciales(String token, String idExternal){
         SharedPreferences sharedPreferences = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor =  sharedPreferences.edit();
@@ -232,6 +274,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         editor.commit();
     }
 
+    /**
+     * Método que crea una petición al servidor que devuelva token y external_id
+     * @param correo
+     */
     private void loginCorreoFacebook(String correo) {
         HashMap<String, String> mapa = new HashMap<>();
         mapa.put("correo", correo);
@@ -259,6 +305,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         requestQueue.add(inicio);
     }
 
+    /**
+     * Método utilizado para ir al LoginActivity
+      */
+
     private void irLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -266,6 +316,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         finish();
     }
 
+    /**
+     * Método para cerrar sesión tando de facebook como de la app
+     */
 
     public void logOut() {
         FirebaseAuth.getInstance().signOut();
@@ -280,6 +333,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         irLogin();
     }
 
+    /**
+     * Método que controla las opciones del menú
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -287,6 +345,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return true;
     }
 
+    /**
+     * Método que controla el layout main
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
